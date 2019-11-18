@@ -1995,8 +1995,15 @@ img.author-box-image {
     margin-right: 10px;
 }
 
+.item blockquote p:after {
+    content: "\f10d";
+    font-family: Fontawesome;
+    float: right;
+    margin-left: 10px;
+}
+
 .testimonial-list-item:hover blockquote {
-    border-left: 4px solid #00b29e;
+    border-left: 4px solid #c72027;
 }
 
 .quote-author-list {
