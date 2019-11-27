@@ -324,21 +324,21 @@
                         <div class="center bounce-in">
                             <span class="stat-icon"><span class="pe-7s-user bounce-in"></span></span>
                             <h1><span class="counter">{{colabRegistrados}}</span></h1>
-                            <h3>COLABORADORES INOMONT</h3>
+                            <h4>COLABORADORES INOMONT</h4>
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-4">
                         <div class="center bounce-in">
                             <span class="stat-icon"><span class="pe-7s-tools bounce-in"></span></span>
                             <h1><span class="counter">{{colabTrabalhando}}</span></h1>
-                            <h3>COLABORADORES EM TRABALHO</h3>
+                            <h4>COLABORADORES EM TRABALHO</h4>
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-4">
                         <div class="center bounce-in">
                             <span class="stat-icon"><span class="pe-7s-graph1 bounce-in"></span></span>
                             <h1><span class="counter">{{trabRealizado}}</span></h1>
-                            <h3>TRABALHOS REALIZADOS</h3>
+                            <h4>TRABALHOS REALIZADOS</h4>
                         </div>
                     </div>
                 </div>
@@ -350,16 +350,16 @@
        		<div class="container">
 	        	<div class="gap"></div>
 		        	<div class="center gap fade-down section-heading">
-		                <h2 class="main-title">Examples Of Excellence</h2>
+		                <h2 class="main-title">Empreendimentos</h2>
 		                <hr>
-		                <p>She evil face fine calm have now. Separate screened he outweigh of distance landlord.</p>
+		                <p>Um pouco mais sobre algumas parcerias realizadas</p>
 		            </div>
-	                <ul class="portfolio-filter fade-down center">
+	                <!-- <ul class="portfolio-filter fade-down center">
 	                    <li><a class="btn btn-outlined btn-primary active" href="#" data-filter="*">All</a></li>
 	                    <li><a class="btn btn-outlined btn-primary" href="#" data-filter=".apps">Apps</a></li>
 	                    <li><a class="btn btn-outlined btn-primary" href="#" data-filter=".nature">Nature</a></li>
 	                    <li><a class="btn btn-outlined btn-primary" href="#" data-filter=".design">Design</a></li>
-	                </ul><!--/#portfolio-filter-->
+	                </ul>/#portfolio-filter -->
 
 	                <ul class="portfolio-items col-3 isotope fade-up">
 	                    <li class="portfolio-item apps isotope-item">
@@ -457,7 +457,7 @@
                     <div class="center gap fade-down section-heading">
                         <h2 class="main-title">Trabalhe conosco</h2>
                         <hr>
-                        <p>Venha fazer parte da nossa equipe.</p>
+                        <p>Venha fazer parte da nossa equipe</p>
                     </div>
                     <div class="gap"></div>
                     <div class="row">
@@ -465,8 +465,8 @@
                             <h3>Contato</h3>
                             <p><span class="icon icon-home"></span>Inomont Engenharia<br/>
                                 <span class="icon icon-phone"></span>Três Lagoas - MS<br/>
-                                <span class="icon icon-mobile"></span>+55 67 9999 1234<br/>
-                                <span class="icon icon-envelop"></span> <a href="#">contato@inomontengenharia.com.br</a> <br/>
+                                <span class="icon icon-mobile"></span>+55 67 9 9142-8272<br/>
+                                <span class="icon icon-envelop"></span> <a href="#">davison.oliveira@inomont.com</a> <br/>
                             </p>
                         </div><!-- col -->
 
@@ -537,6 +537,17 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-4">
+                                    <label >Escolaridade </label>
+                                    <select name="funcao" id="estate" class="custom-select form-control">
+                                        <option selected value="1">Ensino Fundamental Incompleto</option>
+                                        <option  value="2">Ensino Fundamental Completo</option>
+                                        <option  value="3">Ensino Médio Incompleto</option>
+                                        <option  value="4">Ensino Médio Completo</option>
+                                        <option  value="5">Superior Incompleto</option>
+                                        <option  value="6">Superior Completo</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-4">
                                     <label >Reside em Três Lagoas ?</label>
                                     <select name="resideEmTresLagoas" id="estate" class="custom-select form-control">
                                         <option selected value="1">Sim</option>
@@ -550,12 +561,32 @@
                                         <option selected value="2">Não</option>
                                     </select>
                                 </div> 
-                                <div class="col-sm-12 col-md-4 col-4">
-                                </div> 
                                 <div class="col-sm-12 col-md-12 col-12">
                                     <label >Por quê a Inomont deve te contratar?</label>
-                                    <input type="text" class="form-control" name="telefone" maxlength="300">
+                                    <input type="text" class="form-control" name="pqInomont" maxlength="300">
                                 </div> 
+                                <hr>
+                                <h4>Experiência Profissional </h4>
+                                <div class="col-sm-4 col-md-4 col-4">
+                                    <label >Empresa</label>
+                                    <input type="text" class="form-control" name="experiencia" maxlength="300">
+                                </div> 
+                                <div class="col-sm-4 col-md-4 col-4">
+                                    <label >Função</label>
+                                    <input type="text" class="form-control" name="funcao" maxlength="300">
+                                </div> 
+                                <div class="col-sm-12 col-md-4 col-4">
+                                    <label >Periodo </label>
+                                    <select name="periodo" id="estate" class="custom-select form-control">
+                                        <option selected value="1">De 1 a 6 meses</option>
+                                        <option  value="2">De 6 a 12 meses</option>
+                                        <option  value="3">De 1 ano a 1 ano e meio</option>
+                                        <option  value="4">De 1 ano e meio a 2 anos</option>
+                                        <option  value="5">Mais de 2 anos</option>
+                                    </select>
+                                    <br>
+                                </div>
+                                <br>
                                 <div class="col-sm-12 col-md-8 col-8">
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-4">
