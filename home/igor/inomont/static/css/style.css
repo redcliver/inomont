@@ -1996,14 +1996,17 @@ img.author-box-image {
 }
 
 .item blockquote p:after {
-    content: "\f10d";
+    content: "\f10e";
     font-family: Fontawesome;
-    float: right;
     margin-left: 10px;
 }
 
 .testimonial-list-item:hover blockquote {
     border-left: 4px solid #c72027;
+}
+
+.teste-list-item:hover blockquote {
+    border-left: 4px solid #12cfcf;
 }
 
 .quote-author-list {
