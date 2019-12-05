@@ -1,1 +1,1 @@
-gunicorn inomont:application -b 0.0.0.0:17528
+gunicorn inomont:application -b 0.0.0.0:8000
