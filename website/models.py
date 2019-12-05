@@ -85,28 +85,40 @@ class cadastroSite(models.Model):
         ('5', 'Superior Incompleto'),
         ('6', 'Superior Completo'),
     )
+    PR = (
+        ('1', 'De 1 a 6 meses'),
+        ('2', 'De 6 a 12 meses'),
+        ('3', 'De 1 ano a 1 ano e meio'),
+        ('4', 'De 1 ano e meio a 2 anos'),
+        ('5', 'Mais de 2 anos'),
+    )
     id = models.AutoField(primary_key=True)
     estado = models.CharField(max_length=1, choices=ES, default=1)
     estadoCivil = models.CharField(max_length=1, choices=EC, default=1)
-    experiencia = models.CharField(max_length=1, choices=EX, default=1)
+    experiencia = models.CharField(max_length=1, choices=EX)
     escolaridade = models.CharField(max_length=1, choices=SC, default=1)
-    ehDeTresLagoas = models.CharField(max_length=1, choices=SN, default=1)
-    trabalhouInomont = models.CharField(max_length=1, choices=SN, default=1)
+    ehDeTresLagoas = models.CharField(max_length=1, choices=SN, default=1, null=True, blank=True)
+    trabalhouInomont = models.CharField(max_length=1, choices=SN, default=1, null=True, blank=True)
     pqInomont = models.CharField(max_length=400, null=True, blank=True)
     nome = models.CharField(max_length=300, null=True, blank=True)
     sobrenome = models.CharField(max_length=400, null=True, blank=True)
     email = models.CharField(max_length=300, null=True, blank=True)
     cpf = models.CharField(max_length=14, null=True, blank=True)
     rg = models.CharField(max_length=15, null=True, blank=True)
-    endereco = models.CharField(max_length=400, null=True, blank=True)
-    numero = models.CharField(max_length=5, null=True, blank=True)
-    bairro = models.CharField(max_length=200, null=True, blank=True)
-    cidadeEstado = models.ForeignKey(cidadeModel, on_delete="models.CASCADE")
     funcao = models.ForeignKey(funcaoModel, on_delete="models.CASCADE")
-    cep = models.CharField(max_length=10, null=True, blank=True)
     telefone = models.CharField(max_length=14, null=True, blank=True)
     celular = models.CharField(max_length=14, null=True, blank=True)
+    empresa1 = models.CharField(max_length=300, null=True, blank=True)
+    funcao1 = models.CharField(max_length=300, null=True, blank=True)
+    periodo1 = models.CharField(max_length=1, choices=PR)
+    empresa2 = models.CharField(max_length=300, null=True, blank=True)
+    funcao2 = models.CharField(max_length=300, null=True, blank=True)
+    periodo2 = models.CharField(max_length=1, choices=PR)
+    empresa3 = models.CharField(max_length=300, null=True, blank=True)
+    funcao3 = models.CharField(max_length=300, null=True, blank=True)
+    periodo3 = models.CharField(max_length=1, choices=PR)
     dataNasc = models.DateTimeField(default=timezone.now())
+    dataCadastro = models.DateTimeField(default=timezone.now())
 
     def __str__(self):
         return self.nome

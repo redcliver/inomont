@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
 import django.contrib.auth.views
+from django.contrib.auth.views import LoginView, LogoutView
 
 
 # Uncomment the next lines to enable the admin:
@@ -25,6 +26,13 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = [
+
+    url(r'^login', LoginView.as_view(template_name='site/login.html'), name="Login"),
+    url(r'^logout', LogoutView.as_view(template_name='site/home.html'), name="Home"),
+
     url(r'^$', include('website.urls')),
     path('admin/', admin.site.urls),
+
+    # Controle Gerencia
+    url(r'^gerencia/', include('gerencia.urls')),
 ]

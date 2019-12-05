@@ -351,7 +351,7 @@ blockquote {
     -o-transition: all .5s ease-in-out;
     -ms-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
-    border-bottom: 4px solid #00b29e;
+    border-bottom: 4px solid #c72027;
 }
 
 .portfolio-item h5:after {
@@ -492,7 +492,7 @@ div.pp_overlay {
     border-radius: 0;
     list-style: none;
     margin: 0 0 20px;
-    background: #00b29e;
+    background: #a61b20;
     text-align: center;
     padding: 30px 0;
 }
@@ -927,7 +927,7 @@ ul.tag-cloud li {
     position: absolute;
     pointer-events: none;
     border-color: rgba(255, 255, 255, 0);
-    border-bottom-color: #fff;
+    border-bottom-color: transparent;
     border-width: 15px;
     margin-left: -15px;
 }
@@ -2005,9 +2005,6 @@ img.author-box-image {
     border-left: 4px solid #c72027;
 }
 
-.teste-list-item:hover blockquote {
-    border-left: 4px solid #12cfcf;
-}
 
 .quote-author-list {
     max-width: 95px;
@@ -2107,7 +2104,7 @@ img.author-box-image {
     width: 100%;
     height: 100%;
     overflow: visible;
-    background: #f5f5f5 url('../images/loading.gif') no-repeat center center;
+    background: #f5f5f5 url('../../static/images/loading.GIF') no-repeat center center;
 }
 
 
