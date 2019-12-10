@@ -108,7 +108,7 @@ def funcaoVisualizar(request):
     if request.user.is_authenticated:
         if request.user.last_name == "GERENCIA":
             now = datetime.datetime.now().strftime('%H')
-            funcoes = funcaoModel.objects.all().order_by('-id')
+            funcoes = funcaoModel.objects.all().order_by('id')
             now = int(now)
             msgTelaInicial = "Olá, " + request.user.get_short_name() 
             if now >= 4 and now <= 11:
@@ -133,7 +133,7 @@ def funcaoSalvar(request):
     if request.user.is_authenticated:
         if request.user.last_name == "GERENCIA":
             now = datetime.datetime.now().strftime('%H')
-            funcoes = funcaoModel.objects.all().order_by('-id')
+            funcoes = funcaoModel.objects.all().order_by('id')
             now = int(now)
             msgTelaInicial = "Olá, " + request.user.get_short_name() 
             if now >= 4 and now <= 11:
