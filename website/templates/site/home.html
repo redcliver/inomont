@@ -54,6 +54,9 @@
     </script>
 </head><!--/head-->
 <body>
+    {% if msgConfirmação %}
+        <script>alert("{{ msgConfirmação }}")</script>
+    {% endif %}
 <div id="preloader"></div>
     <header class="navbar navbar-inverse navbar-fixed-top opaqued" role="banner">
     <div id="search-wrapper">
@@ -478,8 +481,8 @@
                             <h3>Faça um pré cadastro e/ou deixe o seu currículo.</h3>
                             <br>
                             <div id=""></div>
-                            <form method="post" action="sendemail.php" id="">
-
+                            <form method="post" action="/" id="">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-sm-12 col-md-5 col-5">
                                     <label >Nome</label>
@@ -526,7 +529,7 @@
 
                                 <div class="col-sm-12 col-md-4 col-4">
                                     <label >Função pretendida </label>
-                                    <select name="funcao_id" id="estate" class="custom-select form-control">
+                                    <select name="funcaoId" id="estate" class="custom-select form-control">
                                             <option selected disabled>Funções</option>
                                         {% if funcaoModel in funcoes %}
                                             <option selected value="{{funcaoModel.id}}">{{funcaoModel.nome}}</option>
@@ -595,7 +598,7 @@
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-4">
                                     <label >Tempo de experiência </label>
-                                    <select name="funcao" id="estate" class="custom-select form-control">
+                                    <select name="tempoExperiencia" id="estate" class="custom-select form-control">
                                         <option  value="-1">Menos de 1 ano</option>
                                         <option selected value="1">1 ano</option>
                                         <option  value="2">2 ano</option>
@@ -605,7 +608,7 @@
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-4">
                                     <label >Escolaridade </label>
-                                    <select name="funcao" id="estate" class="custom-select form-control">
+                                    <select name="escolaridade" id="estate" class="custom-select form-control">
                                         <option selected value="1">Ensino Fundamental Incompleto</option>
                                         <option  value="2">Ensino Fundamental Completo</option>
                                         <option  value="3">Ensino Médio Incompleto</option>
@@ -623,7 +626,7 @@
                                 </div> 
                                 <div class="col-sm-12 col-md-4 col-4">
                                     <label >Já trabalhou na Inomont ?</label>
-                                    <select name="resideEmTresLagoas" id="estate" class="custom-select form-control">
+                                    <select name="trabalhouInomont" id="estate" class="custom-select form-control">
                                         <option  value="1">Sim</option>
                                         <option selected value="2">Não</option>
                                     </select>

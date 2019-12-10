@@ -1,0 +1,41 @@
+{% extends 'base_gerencia.html' %}
+{% block body %}
+{% load static %}
+<main>
+    {% if msgConfirmacao %}
+        <script>alert('{{msgConfirmacao}}')</script>
+    {% endif %}
+    <div class="col-sm-12 col-md-12 col-12">
+        <img style="height: 80px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/funcaoAdd.svg' %}"alt="">&nbsp;<h3>Nova Função</h3><br><br>
+    </div>
+    <form method="POST" action="/gerencia/funcaoVisualizar/" id="">
+        {% csrf_token %}
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" width="10%">#</th>
+                        <th scope="col" width="30%">Nome</th>
+                        <th scope="col" width="50%">Observação</th>
+                        <th scope="col" width="10%" style="text-align: center;">Editar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for funcaoModel in funcoes %}
+                    <input type="hidden" name="funcaoID" value="{{funcaoModel.id}}"/>
+                    <tr>
+                        <th scope="row">{{funcaoModel.id}}</th>
+                        <td>{{funcaoModel.nome}}</td>
+                        <td>{{funcaoModel.observacao}}</td>
+                        <td><input class="btn btn-outlined btn-warning" style="float: right;" type="submit" value="Editar" /></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="col-sm-12 col-md-12 col-12">
+                <input class="btn btn-outlined btn-warning" style="float: right;" type="button" value="Voltar" onclick="goBack()"/>
+            </div>
+        </div>
+    </form>
+</main>
+{% endblock %}
