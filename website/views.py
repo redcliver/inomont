@@ -63,7 +63,7 @@ def home(request):
                                                   'colabRegistrados':colabRegistrados,
                                                   'colabTrabalhando':colabTrabalhando,
                                                   'trabRealizado':trabRealizado,
-                                                  'msgConfirmacao':msgConfirmacao
+                                                  'msgConfirmacao':msgConfirmacao,
                                                   'funcoes':funcoes})
     return render(request, 'site/home.html', {'title':'Home',
                                               'colabRegistrados':colabRegistrados,
