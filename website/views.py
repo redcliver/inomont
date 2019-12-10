@@ -6,6 +6,7 @@ def home(request):
     colabRegistrados = 156
     colabTrabalhando = 64
     trabRealizado = 123
+    funcoes = funcaoModel.objects.all().order_by('nome')
     if request.method == 'POST':
         nome = request.POST.get('nome')
         sobrenome = request.POST.get('sobrenome')
@@ -62,8 +63,10 @@ def home(request):
                                                   'colabRegistrados':colabRegistrados,
                                                   'colabTrabalhando':colabTrabalhando,
                                                   'trabRealizado':trabRealizado,
-                                                  'msgConfirmacao':msgConfirmacao})
+                                                  'msgConfirmacao':msgConfirmacao
+                                                  'funcoes':funcoes})
     return render(request, 'site/home.html', {'title':'Home',
                                               'colabRegistrados':colabRegistrados,
                                               'colabTrabalhando':colabTrabalhando,
-                                              'trabRealizado':trabRealizado})
+                                              'trabRealizado':trabRealizado,
+                                              'funcoes':funcoes})
