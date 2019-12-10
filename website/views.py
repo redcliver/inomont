@@ -17,7 +17,7 @@ def home(request):
         celular = request.POST.get('celular')
         telefone = request.POST.get('telefone')
         estadoCivil = request.POST.get('estadoCivil')
-        funcaoId = request.POST.get('funcaoId')
+        funcaoID = request.POST.get('funcaoID')
         tempoExperiencia = request.POST.get('tempoExperiencia')
         escolaridade = request.POST.get('escolaridade')
         resideEmTresLagoas = request.POST.get('resideEmTresLagoas')
@@ -32,7 +32,7 @@ def home(request):
         empresa3 = request.POST.get('empresa3')
         funcao3 = request.POST.get('funcao3')
         periodo3 = request.POST.get('periodo3')
-        funcaoObj = funcaoModel.objects.filter(id=funcaoId).get()
+        funcaoObj = funcaoModel.objects.filter(id=funcaoID).get()
         novo_site = cadastroSite(nome=nome, 
                                  sobrenome=sobrenome, 
                                  telefone=telefone, 
