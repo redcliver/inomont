@@ -8,7 +8,7 @@
     <div class="col-sm-12 col-md-12 col-12">
         <img style="height: 80px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/funcaoAdd.svg' %}"alt="">&nbsp;<h3>Visualizar Colaborador</h3><br><br>
     </div>
-    <form method="POST" action="/gerencia/colaboradorSite/" id="">
+    <form method="POST" action="/gerencia/colaboradoresSite/" id="">
         {% csrf_token %}
         <div class="row">
             <table class="table table-hover">
@@ -26,8 +26,8 @@
                     <tr>
                         <th scope="row">{{cadastroSite.id}}</th>
                         <td>{{cadastroSite.nome}}</td>
-                        <td>{{cadastroSite.observacao}}</td>
-                        <td><input class="btn btn-outlined btn-warning" style="float: right;" type="submit" value="Editar" /></td>
+                        <td>{{cadastroSite.get_funcao_display}}</td>
+                        <td><input class="btn btn-outlined btn-warning" style="float: right;" type="submit" value="Visualizar" /></td>
                     </tr>
                     {% endfor %}
                 </tbody>
