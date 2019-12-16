@@ -122,3 +122,20 @@ class cadastroSite(models.Model):
 
     def __str__(self):
         return self.nome
+
+class fornecedorModel(models.Model):
+    id = models.AutoField(primary_key=True)
+    nome = models.CharField(max_length=200)
+    contatoPrincipal = models.CharField(max_length=200)
+    email = models.CharField(max_length=300, null=True, blank=True)
+    cnpj = models.CharField(max_length=30, null=True, blank=True)
+    telefone = models.CharField(max_length=14, null=True, blank=True)
+    celular = models.CharField(max_length=14, null=True, blank=True)
+    endereco = models.CharField(max_length=400, null=True, blank=True)
+    numero = models.CharField(max_length=5, null=True, blank=True)
+    bairro = models.CharField(max_length=200, null=True, blank=True)
+    cidadeEstado = models.ForeignKey(cidadeModel, on_delete="models.CASCADE")
+    data_cadastro = models.DateTimeField(default=timezone.now)
+    
+    def __str__(self):
+        return self.nome
