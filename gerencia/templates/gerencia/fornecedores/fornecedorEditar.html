@@ -6,58 +6,59 @@
 		<script>alert('{{msgConfirmacao}}')</script>
 	{% endif %}
     <div class="row">
-        <form method="post" action="/gerencia/fornecedoresNovo/" id="">
+        <form method="post" action="/gerencia/fornecedoresSalvar/" id="">
             {% csrf_token %}
+            <input type="hidden" name="fornecedorID" value="{{fornecedorObj.id}}"/>
             <div class="row">
                 <div class="col-sm-12 col-md-7 col-7">
                     <label >Nome</label>
-                    <input type="text" name="nome" class="form-control" maxlength="200" placeholder="Nome">
+                    <input type="text" name="nome" class="form-control" maxlength="200" placeholder="Nome" value="{{fornecedorObj.nome}}">
                 </div>
                 <div class="col-sm-12 col-md-5 col-5">
                     <label >CNPJ</label>
-                    <input type="text" class="form-control" name="cnpj" maxlength="18" onkeydown="javascript: fMasc( this, mCNPJ );" placeholder="CNPJ">
+                    <input type="text" class="form-control" name="cnpj" maxlength="18" onkeydown="javascript: fMasc( this, mCNPJ );" placeholder="CNPJ" value="{{fornecedorObj.cnpj}}">
                 </div>
                 <div class="col-sm-12 col-md-7 col-7">
                     <label >Contato</label>
-                    <input type="text" name="contatoPrincipal" class="form-control" maxlength="200" placeholder="Contato">
+                    <input type="text" name="contatoPrincipal" class="form-control" maxlength="200" placeholder="Contato" value="{{fornecedorObj.contatoPrincipal}}">
                 </div>
                 <div class="col-sm-12 col-md-5 col-5">
                     <label >Celular</label>
-                    <input type="text" class="form-control" name="celular" maxlength="14" placeholder="Celular" onkeydown="javascript: fMasc( this, mTel );">
+                    <input type="text" class="form-control" name="celular" maxlength="14" placeholder="Celular" onkeydown="javascript: fMasc( this, mTel );" value="{{fornecedorObj.celular}}">
                 </div>
                 <div class="col-sm-12 col-md-7 col-7">
                     <label >E-mail</label>
-                    <input type="email" name="email" maxlength="300" placeholder="E-mail" class="form-control">
+                    <input type="email" name="email" maxlength="300" placeholder="E-mail" class="form-control" value="{{fornecedorObj.email}}">
                 </div>
                 <div class="col-sm-12 col-md-5 col-5">
                     <label >Telefone</label>
-                    <input type="text" class="form-control" name="telefone" maxlength="14" onkeydown="javascript: fMasc( this, mTel );" placeholder="Telefone">
+                    <input type="text" class="form-control" name="telefone" maxlength="14" onkeydown="javascript: fMasc( this, mTel );" placeholder="Telefone" value="{{fornecedorObj.telefone}}">
                 </div>
                 <div class="col-sm-12 col-md-3 col-3">
                     <label >CEP</label>
-                    <input type="text" class="form-control"  id="cep" name="cep" maxlength="9" placeholder="CEP" onkeydown="javascript: fMasc( this, mCEP );" onblur="pesquisacep(this.value);">
+                    <input type="text" class="form-control"  id="cep" name="cep" maxlength="9" placeholder="CEP" onkeydown="javascript: fMasc( this, mCEP );" onblur="pesquisacep(this.value);" value="{{fornecedorObj.cep}}">
                 </div>
                 <div class="col-sm-12 col-md-10 col-10">
                     <label >Endereço</label>
-                    <input type="text" name="endereco" id="rua" class="form-control" maxlength="400" placeholder="Endereço">
+                    <input type="text" name="endereco" id="rua" class="form-control" maxlength="400" placeholder="Endereço" value="{{fornecedorObj.endereco}}">
                 </div>
                 <div class="col-sm-12 col-md-2 col-2">
                     <label >Número</label>
-                    <input type="number" name="numero" class="form-control" maxlength="5" placeholder="9999">
+                    <input type="number" name="numero" class="form-control" maxlength="5" placeholder="9999" value="{{fornecedorObj.numero}}">
                 </div>
                 <div class="col-sm-12 col-md-4 col-4">
                     <label >Bairro</label>
-                    <input type="text" name="bairro"  id="bairro" class="form-control" maxlength="200" placeholder="Bairro">
+                    <input type="text" name="bairro"  id="bairro" class="form-control" maxlength="200" placeholder="Bairro" value="{{fornecedorObj.bairro}}">
                 </div>
                 <div class="col-sm-12 col-md-1 col-1">
                 </div>
                 <div class="col-sm-12 col-md-4 col-4">
                     <label >Cidade</label>
-                    <input type="text" name="cidade" id="cidade" class="form-control" maxlength="200" placeholder="Cidade">
+                    <input type="text" name="cidade" id="cidade" class="form-control" maxlength="200" placeholder="Cidade" value="{{fornecedorObj.cidade}}">
                 </div>
                 <div class="col-sm-12 col-md-3 col-3">
                     <label >Estado</label>                    
-                    <input type="text" name="uf" id="uf" class="form-control" maxlength="200" placeholder="UF">
+                    <input type="text" name="uf" id="uf" class="form-control" maxlength="200" placeholder="UF" value="{{fornecedorObj.uf}}">
                 </div>
                 <br>
                 <div class="col-sm-12 col-md-12 col-12">

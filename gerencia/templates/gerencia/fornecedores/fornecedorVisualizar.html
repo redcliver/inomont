@@ -1,0 +1,41 @@
+{% extends 'base_gerencia.html' %}
+{% block body %}
+{% load static %}
+<main>
+    {% if msgConfirmacao %}
+        <script>alert('{{msgConfirmacao}}')</script>
+    {% endif %}
+    <div class="col-sm-12 col-md-12 col-12">
+        <img style="height: 80px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/funcaoAdd.svg' %}"alt="">&nbsp;<h3>Visualizar Fornecedor</h3><br><br>
+    </div>
+    <form method="POST" action="/gerencia/fornecedoresVisualizar/" id="">
+        {% csrf_token %}
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" width="10%">#</th>
+                        <th scope="col" width="30%">Nome</th>
+                        <th scope="col" width="50%">Contato</th>
+                        <th scope="col" width="10%" style="text-align: center;">Visualizar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for fornecedorModel in fornecedores %}
+                    <tr>
+                        <input type="hidden" name="fornecedorID" value="{{fornecedorModel.id}}"/>
+                        <th scope="row">{{fornecedorModel.id}}</th>
+                        <td>{{fornecedorModel.nome}}</td>
+                        <td>{{fornecedorModel.contatoPrincipal}}</td>
+                        <td><input class="btn btn-outlined btn-warning" style="float: right;" type="submit" value="Visualizar" /></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="col-sm-12 col-md-12 col-12">
+                <input class="btn btn-outlined btn-warning" style="float: right;" type="button" value="Voltar" onclick="goBack()"/>
+            </div>
+        </div>
+    </form>
+</main>
+{% endblock %}

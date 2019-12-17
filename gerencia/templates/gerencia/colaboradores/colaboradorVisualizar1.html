@@ -8,38 +8,39 @@
     <div class="row">
         <form method="post" action="/gerencia/colaboradorNovo/" id="">
             {% csrf_token %}
+            <input type="hidden" name="colaboradorID" value="{{colaboradorObj.id}}" />
             <div class="row">
                 <div class="col-sm-12 col-md-5 col-5">
                     <label >Nome</label>
-                    <input type="text" name="nome" class="form-control" maxlength="300" placeholder="Nome">
+                    <input type="text" name="nome" class="form-control" maxlength="300" placeholder="Nome" value="{{colaboradorObj.id}}">
                 </div>
                 <div class="col-sm-12 col-md-7 col-7">
                     <label >Sobrenome</label>
-                    <input type="text" name="sobrenome" class="form-control" maxlength="400" placeholder="Sobrenome">
+                    <input type="text" name="sobrenome" class="form-control" maxlength="400" placeholder="Sobrenome" value="{{colaboradorObj.id}}">
                 </div>
                 <div class="col-sm-12 col-md-6 col-6">
                     <label >CPF</label>
-                    <input type="text" class="form-control" name="cpf" maxlength="14" onkeydown="javascript: fMasc( this, mCPF );">
+                    <input type="text" class="form-control" name="cpf" maxlength="14" onkeydown="javascript: fMasc( this, mCPF );" value="{{colaboradorObj.id}}">
                 </div>
                 <div class="col-sm-12 col-md-6 col-6">
                     <label >RG</label>
-                    <input type="text" class="form-control" name="rg" maxlength="13" onkeydown="javascript: fMasc( this, mRG );">
+                    <input type="text" class="form-control" name="rg" maxlength="13" onkeydown="javascript: fMasc( this, mRG );" value="{{colaboradorObj.id}}">
                 </div>
                 <div class="col-sm-12 col-md-4 col-4">
                     <label >Data de Nasc.</label>
-                    <input type="date" name="dataNasc" value="{{today}}" class="form-control">
+                    <input type="date" name="dataNasc" value="{{today}}" class="form-control" value="{{colaboradorObj.id}}">
                 </div>
                 <div class="col-sm-12 col-md-8 col-8">
                     <label >E-mail</label>
-                    <input type="email" name="email" maxlength="300" class="form-control">
+                    <input type="email" name="email" maxlength="300" class="form-control" value="{{colaboradorObj.id}}">
                 </div>
                 <div class="col-sm-12 col-md-6 col-6">
                     <label >Celular</label>
-                    <input type="text" class="form-control" name="celular" maxlength="14" onkeydown="javascript: fMasc( this, mTel );">
+                    <input type="text" class="form-control" name="celular" maxlength="14" onkeydown="javascript: fMasc( this, mTel );" value="{{colaboradorObj.id}}">
                 </div>
                 <div class="col-sm-12 col-md-6 col-6">
                     <label >Telefone</label>
-                    <input type="text" class="form-control" name="telefone" maxlength="14" onkeydown="javascript: fMasc( this, mTel );">
+                    <input type="text" class="form-control" name="telefone" maxlength="14" onkeydown="javascript: fMasc( this, mTel );" value="{{colaboradorObj.id}}">
                 </div>
                 <div class="col-sm-12 col-md-4 col-4">
                     <label >Estado civil</label>
