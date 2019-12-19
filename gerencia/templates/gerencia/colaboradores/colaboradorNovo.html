@@ -6,7 +6,7 @@
 		<script>alert('{{msgConfirmacao}}')</script>
 	{% endif %}
     <div class="row">
-        <form method="post" action="/gerencia/colaboradorNovo/" id="">
+        <form method="post" action="/gerencia/colaboradoresNovo/" id="">
             {% csrf_token %}
             <div class="row">
                 <div class="col-sm-12 col-md-5 col-5">
@@ -98,10 +98,11 @@
                 </div> 
                 <div class="col-sm-12 col-md-12 col-12">
                     <label >Por quê a Inomont deve te contratar?</label>
-                    <input type="text" class="form-control" name="pqInomont" maxlength="300">
+                    <input type="text" class="form-control" name="pqInomont" maxlength="300"><br>
                 </div> 
-                <hr>
-                <h5>Experiência Profissional 1</h5>
+                <div class="col-md-12">
+                    <h4>Experiência Profissional 1</h4>
+                </div>
                 <div class="col-sm-4 col-md-4 col-4">
                     <label >Empresa</label>
                     <input type="text" class="form-control" name="empresa1" maxlength="300">
@@ -121,7 +122,9 @@
                     </select>
                     <br>
                 </div>
-                <h5>Experiência Profissional 2</h5>
+                <div class="col-md-12">
+                    <h4>Experiência Profissional 2</h4>
+                </div>
                 <div class="col-sm-4 col-md-4 col-4">
                     <label >Empresa</label>
                     <input type="text" class="form-control" name="empresa2" maxlength="300">
@@ -141,7 +144,9 @@
                     </select>
                     <br>
                 </div>
-                <h5>Experiência Profissional 3</h5>
+                <div class="col-md-12">
+                    <h4>Experiência Profissional 3</h4>
+                </div>
                 <div class="col-sm-4 col-md-4 col-4">
                     <label >Empresa</label>
                     <input type="text" class="form-control" name="empresa3" maxlength="300">

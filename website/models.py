@@ -141,3 +141,33 @@ class fornecedorModel(models.Model):
     
     def __str__(self):
         return self.nome
+
+class colaboradorModel(models.Model):
+    ST = (
+        ('1', 'Disponível'),
+        ('2', 'Alocado'),
+        ('3', 'Afastado'),
+        ('4', 'Desligado'),
+    )
+    id = models.AutoField(primary_key=True)
+    nome = models.CharField(max_length=200)
+    sobrenome = models.CharField(max_length=200, null=True, blank=True)
+    cpf = models.CharField(max_length=30, null=True, blank=True)
+    funcao = models.CharField(max_length=300, null=True, blank=True)
+    dataAdmissao = models.DateTimeField(default=timezone.now)
+    dataDesligamento = models.DateTimeField(null=True, blank=True)
+    status = models.CharField(max_length=1, choices=ST, default=1)
+    encarregado = models.CharField(max_length=300, null=True, blank=True)
+    setor = models.CharField(max_length=300, null=True, blank=True)
+    telefone = models.CharField(max_length=15, null=True, blank=True)
+    celular = models.CharField(max_length=15, null=True, blank=True)
+    cep = models.CharField(max_length=9, null=True, blank=True)
+    endereco = models.CharField(max_length=400, null=True, blank=True)
+    numero = models.CharField(max_length=5, null=True, blank=True)
+    bairro = models.CharField(max_length=200, null=True, blank=True)
+    cidade = models.CharField(max_length=300, null=True, blank=True)
+    uf = models.CharField(max_length=300, null=True, blank=True)
+    data_cadastro = models.DateTimeField(default=timezone.now)
+    
+    def __str__(self):
+        return self.nome

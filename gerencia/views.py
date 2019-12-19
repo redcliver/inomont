@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from website.models import funcaoModel, cadastroSite, fornecedorModel
+from website.models import funcaoModel, cadastroSite, fornecedorModel, colaboradorModel
 import datetime
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
@@ -119,7 +119,7 @@ def colaboradoresVisualizar(request):
             now = datetime.datetime.now().strftime('%H')
             now = int(now)
             msgTelaInicial = "Olá, " + request.user.get_short_name()
-            colaboradoresCadastrados = cadastroSite.objects.all().order_by('funcao')
+            colaboradoresCadastrados = colaboradorModel.objects.all().order_by('funcao')
  
             if now >= 4 and now <= 11:
                 msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
@@ -130,7 +130,7 @@ def colaboradoresVisualizar(request):
             if request.method == "POST" and request.POST.get('colaboradorID') != None:
                 colaboradorID = request.POST.get('colaboradorID')
                 colaboradorObj = colaboradorModel.objects.filter(id=colaboradorID).get()
-                return render (request, 'gerencia/fornecedores/colaboradorVisualizar1.html', {'title':'Visualizar Colaborador', 
+                return render (request, 'gerencia/colaboradores/colaboradorVisualizar1.html', {'title':'Visualizar Colaborador', 
                                                                                             'msgTelaInicial':msgTelaInicial,
                                                                                             'colaboradorObj':colaboradorObj})            
                 
@@ -155,6 +155,34 @@ def colaboradoresSite(request):
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
                 
             return render (request, 'gerencia/colaboradores/colaboradorSite.html', {'title':'Colaboradores Site', 
+                                                            'msgTelaInicial':msgTelaInicial,
+                                                            'colaboradoresSite':colaboradoresSite})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+
+def colaboradoresSiteVisualizar(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name()
+            colaboradoresSite = cadastroSite.objects.all().order_by('funcao')
+ 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            if request.method == "POST" and request.POST.get('colaboradorID') != None:
+                colaboradorID = request.POST.get('colaboradorID')
+                colaboradorObj = cadastroSite.objects.filter(id=colaboradorID).get()
+                return render (request, 'gerencia/colaboradores/colaboradorSiteVisualizar1.html', {'title':'Visualizar Colaborador', 
+                                                                                            'msgTelaInicial':msgTelaInicial,
+                                                                                            'colaboradorObj':colaboradorObj})            
+                
+            return render (request, 'gerencia/colaboradores/colaboradorSiteVisualizar.html', {'title':'Visualizar Colaborador', 
                                                             'msgTelaInicial':msgTelaInicial,
                                                             'colaboradoresSite':colaboradoresSite})
         return render (request, 'site/login.html', {'title':'Login'})

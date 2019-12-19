@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^colaboradoresNovo/', views.colaboradoresNovo),
     url(r'^colaboradoresVisualizar/', views.colaboradoresVisualizar),
     url(r'^colaboradoresSite/', views.colaboradoresSite),
+    url(r'^colaboradoresSiteVisualizar/', views.colaboradoresSiteVisualizar),
     url(r'^fornecedores/', views.fornecedores),
     url(r'^fornecedoresNovo/', views.fornecedoresNovo),
     url(r'^fornecedoresVisualizar/', views.fornecedoresVisualizar),

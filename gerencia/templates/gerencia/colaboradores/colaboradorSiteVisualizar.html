@@ -8,7 +8,7 @@
     <div class="col-sm-12 col-md-12 col-12">
         <img style="height: 80px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/funcaoAdd.svg' %}"alt="">&nbsp;<h3>Visualizar Colaborador</h3><br><br>
     </div>
-    <form method="POST" action="/gerencia/colaboradoresVisualizar/" id="">
+    <form method="POST" action="/gerencia/colaboradoresSiteVisualizar/" id="">
         {% csrf_token %}
         <div class="row">
             <table class="table table-hover">
@@ -16,12 +16,12 @@
                     <tr>
                         <th scope="col" width="10%">#</th>
                         <th scope="col" width="30%">Nome</th>
-                        <th scope="col" width="50%">Função</th>
+                        <th scope="col" width="50%">Função Pretendida</th>
                         <th scope="col" width="10%" style="text-align: center;">Visualizar</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for cadastroSite in colaboradoresCadastrados %}
+                    {% for cadastroSite in colaboradoresSite %}
                     <tr>
                         <th><input type="hidden" name="colaboradorID" value="{{cadastroSite.id}}"/></th>
                         <th scope="row">{{cadastroSite.id}}</th>
