@@ -22,8 +22,8 @@
                 </thead>
                 <tbody>
                     {% for cadastroSite in colaboradoresSite %}
-                    <input type="hidden" name="colaboradorID" value="{{cadastroSite.id}}"/>
                     <tr>
+                        <input type="hidden" name="colaboradorID" value="{{cadastroSite.id}}"/>
                         <th scope="row">{{cadastroSite.id}}</th>
                         <td>{{cadastroSite.nome}}</td>
                         <td>{{cadastroSite.observacao}}</td>
