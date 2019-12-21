@@ -23,8 +23,8 @@
                 <tbody>
                     {% for cadastroSite in colaboradoresSite %}
                     <tr>
-                        <th><input type="hidden" name="colaboradorID" value="{{cadastroSite.id}}"/></th>
-                        <th scope="row">{{cadastroSite.id}}</th>
+                        <td><input type="hidden" name="colaboradorID" value="{{cadastroSite.id}}"/></td>
+                        <td scope="row">{{cadastroSite.id}}</td>
                         <td>{{cadastroSite.nome}}</td>
                         <td>{{cadastroSite.get_funcao_display}}</td>
                         <td><input class="btn btn-outlined btn-warning" style="float: right;" type="submit" value="Visualizar" /></td>
