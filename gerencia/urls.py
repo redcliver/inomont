@@ -18,4 +18,8 @@ urlpatterns = [
     url(r'^funcaoNovo/', views.funcaoNovo),
     url(r'^funcaoVisualizar/', views.funcaoVisualizar),
     url(r'^funcaoSalvar/', views.funcaoSalvar),
+    url(r'^clientes/', views.clientesHome),
+    url(r'^clientesNovo/', views.clientesNovo),
+    url(r'^clientesVisualizar/', views.clientesVisualizar),
+    url(r'^clientesEditar/', views.clientesEditar),
 ]

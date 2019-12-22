@@ -6,9 +6,9 @@
         <script>alert('{{msgConfirmacao}}')</script>
     {% endif %}
     <div class="col-sm-12 col-md-12 col-12">
-        <img style="height: 80px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/funcaoAdd.svg' %}"alt="">&nbsp;<h3>Visualizar Fornecedor</h3><br><br>
+        <img style="height: 80px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/search.svg' %}"alt="">&nbsp;<h3>Visualizar Cliente</h3><br><br>
     </div>
-    <form method="POST" action="/gerencia/fornecedoresVisualizar/" id="">
+    <form method="POST" action="/gerencia/clientesVisualizar/" id="">
         {% csrf_token %}
         <div class="row">
             <table class="table table-hover">
@@ -21,19 +21,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for fornecedorModel in fornecedores %}
+                    {% for clienteModel in clientes %}
                     <tr>
-                        <input type="hidden" name="fornecedorID" value="{{fornecedorModel.id}}"/>
-                        <th scope="row">{{fornecedorModel.id}}</th>
-                        <td>{{fornecedorModel.nome}}</td>
-                        <td>{{fornecedorModel.contatoPrincipal}}</td>
-                        <td><input class="btn btn-outlined btn-warning" style="float: right;" type="submit" value="Visualizar" /></td>
+                        <th scope="row">{{clienteModel.id}}</th>
+                        <td>{{clienteModel.nome}}</td>
+                        <td>{{clienteModel.contato}}</td>
+                        <td><button class="btn btn-outlined btn-warning" name="clienteID" style="float: right;" type="submit" value="{{clienteModel.id}}">Visualizar</button></td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
             <div class="col-sm-12 col-md-12 col-12">
-                <input class="btn btn-outlined btn-warning" style="float: right;" type="button" formaction="#" value="Voltar" onclick="goBack()"/>
+                <input class="btn btn-outlined btn-secondary" style="float: right;" type="button" formaction="#" value="Voltar" onclick="goBack()"/>
             </div>
         </div>
     </form>

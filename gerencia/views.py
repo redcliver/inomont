@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from website.models import funcaoModel, cadastroSite, fornecedorModel, colaboradorModel
+from website.models import funcaoModel, cadastroSite, fornecedorModel, colaboradorModel, clienteModel
 import datetime
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
@@ -24,6 +24,7 @@ def home(request):
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
+#Colaboradores
 def colaboradores(request):
     if request.user.is_authenticated:
         if request.user.last_name == "GERENCIA":
@@ -189,6 +190,7 @@ def colaboradoresSiteVisualizar(request):
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
+#Fornecedores
 def fornecedores(request):
     if request.user.is_authenticated:
         if request.user.last_name == "GERENCIA":
@@ -345,6 +347,7 @@ def fornecedoresSalvar(request):
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
+#Funções
 def funcaoHome(request):
     if request.user.is_authenticated:
         if request.user.last_name == "GERENCIA":
@@ -443,5 +446,136 @@ def funcaoSalvar(request):
             return render (request, 'gerencia/funcoes/funcaoVisualizar.html', {'title':'Visualizar Função', 
                                                                                'msgTelaInicial':msgTelaInicial,
                                                                                'funcoes':funcoes})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+#Clientes
+def clientesHome(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+                
+            return render (request, 'gerencia/clientes/home.html', {'title':'Clientes', 
+                                                            'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+def clientesNovo(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            if request.method == 'POST' and request.POST.get('nome'):
+                nome = request.POST.get('nome')
+                contato = request.POST.get('contato')
+                cnpj = request.POST.get('cnpj')
+                email = request.POST.get('email')
+                telefone = request.POST.get('telefone')
+                cep = request.POST.get('cep')
+                endereco = request.POST.get('endereco')
+                numero = request.POST.get('numero')
+                bairro = request.POST.get('bairro')
+                cidade = request.POST.get('cidade')
+                uf = request.POST.get('uf')
+                novoCliente = clienteModel(nome=nome, contato=contato, cnpj=cnpj, email=email, telefone=telefone, cep=cep, endereco=endereco, numero=numero, bairro=bairro, cidade=cidade, uf=uf)
+                novoCliente.save()
+                msgConfirmacao = "Novo cliente cadastrado com sucesso!"
+                return render (request, 'gerencia/clientes/clienteNovo.html', {'title':'Novo Cliente', 
+                                                                'msgTelaInicial':msgTelaInicial,
+                                                                'msgConfirmacao':msgConfirmacao})
+            return render (request, 'gerencia/clientes/clienteNovo.html', {'title':'Novo Cliente', 
+                                                            'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+def clientesVisualizar(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            clientes = clienteModel.objects.all().order_by('id')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            if request.method == 'POST' and request.POST.get('clienteID'):
+                clienteID = request.POST.get('clienteID')
+                clienteObj = clienteModel.objects.filter(id=clienteID).get()
+                return render (request, 'gerencia/clientes/clienteVisualizar1.html', {'title':'Visualizar Cliente', 
+                                                                'msgTelaInicial':msgTelaInicial,
+                                                                'clienteObj':clienteObj})
+            return render (request, 'gerencia/clientes/clienteVisualizar.html', {'title':'Visualizar Cliente', 
+                                                                               'msgTelaInicial':msgTelaInicial,
+                                                                               'clientes':clientes})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+def clientesEditar(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            if request.method == 'GET':
+                clienteID = request.GET.get('clienteID')
+                clienteObj = clienteModel.objects.filter(id=clienteID).get()
+                return render (request, 'gerencia/clientes/clienteEditar.html', {'title':'Editar Cliente', 
+                                                                                'msgTelaInicial':msgTelaInicial,
+                                                                                'clienteObj':clienteObj})
+            if request.method == 'POST' and request.POST.get('clienteID'):
+                clienteID = request.POST.get('clienteID')
+                clienteObj = clienteModel.objects.filter(id=clienteID).get()
+                nome = request.POST.get('nome')
+                contato = request.POST.get('contato')
+                cnpj = request.POST.get('cnpj')
+                email = request.POST.get('email')
+                telefone = request.POST.get('telefone')
+                cep = request.POST.get('cep')
+                endereco = request.POST.get('endereco')
+                numero = request.POST.get('numero')
+                bairro = request.POST.get('bairro')
+                cidade = request.POST.get('cidade')
+                uf = request.POST.get('uf')
+                clienteObj.nome = nome
+                clienteObj.contato = contato
+                clienteObj.cnpj = cnpj
+                clienteObj.email = email
+                clienteObj.telefone = telefone
+                clienteObj.cep = cep
+                clienteObj.endereco = endereco
+                clienteObj.numero = numero
+                clienteObj.bairro = bairro
+                clienteObj.cidade = cidade
+                clienteObj.uf = uf
+                clienteObj.save()
+                msgConfirmacao = "Cliente editado com sucesso!"
+                return render (request, 'gerencia/clientes/clienteVisualizar1.html', {'title':'Visualizar Cliente', 
+                                                                'msgTelaInicial':msgTelaInicial,
+                                                                'clienteObj':clienteObj,
+                                                                'msgConfirmacao':msgConfirmacao})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})

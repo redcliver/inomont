@@ -1,0 +1,65 @@
+{% extends 'base_gerencia.html' %}
+{% block body %}
+{% load static %}
+<main>
+    <div class="col-sm-12 col-md-12 col-12">
+        <img style="height: 80px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/partner.svg' %}"alt="">&nbsp;<h3>Editar Cliente</h3><br><br>
+    </div>
+    <form method="POST" action="/gerencia/clientesEditar/" id="">
+        {% csrf_token %}
+        <input type="hidden" name="clienteID" value="{{clienteObj.id}}">
+        <div class="row">
+            <div class="col-sm-12 col-md-5"style="padding-bottom: 10px;">
+                <label >Nome</label>
+                <input type="text" name="nome" class="form-control" maxlength="300" placeholder="Nome" value="{{clienteObj.nome}}">
+            </div>
+            <div class="col-sm-12 col-md-7" style="padding-bottom: 10px;">
+                <label >Contato</label>
+                <input type="text" name="contato" class="form-control" maxlength="300" placeholder="Contato" value="{{clienteObj.contato}}"><br>
+            </div>                
+            <div class="col-sm-12 col-md-5" >
+                <label >CPNJ</label>
+                <input type="text" class="form-control" name="cnpj" maxlength="18" onkeydown="javascript: fMasc( this, mCNPJ );" placeholder="CNPJ" value="{{clienteObj.cnpj}}">
+            </div>
+            <div class="col-sm-12 col-md-7" style="padding-bottom: 10px;">
+                <label >E-mail</label>
+                <input type="email" name="email" class="form-control" maxlength="300" placeholder="E-mail" value="{{clienteObj.email}}"><br>
+            </div>
+            <div class="col-sm-12 col-md-5 col-5" style="padding-bottom: 10px;">
+                <label >Telefone</label>
+                <input type="text" class="form-control" name="telefone" maxlength="14" onkeydown="javascript: fMasc( this, mTel );" placeholder="Telefone" value="{{clienteObj.telefone}}">
+            </div>
+            <div class="col-sm-12 col-md-3 col-3" style="padding-bottom: 10px;">
+                <label >CEP</label>
+                <input type="text" class="form-control"  id="cep" name="cep" maxlength="9" placeholder="CEP" onkeydown="javascript: fMasc( this, mCEP );" onblur="pesquisacep(this.value);" value="{{clienteObj.cep}}"><br>
+            </div>
+            <div class="col-sm-12 col-md-10 col-10" style="padding-bottom: 10px;">
+                <label >Endereço</label>
+                <input type="text" name="endereco" id="rua" class="form-control" maxlength="400" placeholder="Endereço" value="{{clienteObj.endereco}}">
+            </div>
+            <div class="col-sm-12 col-md-2 col-2" style="padding-bottom: 10px;">
+                <label >Número</label>
+                <input type="number" name="numero" class="form-control" maxlength="5" placeholder="9999" value="{{clienteObj.numero}}"><br>
+            </div>
+            <div class="col-sm-12 col-md-4 col-4" style="padding-bottom: 10px;">
+                <label >Bairro</label>
+                <input type="text" name="bairro"  id="bairro" class="form-control" maxlength="200" placeholder="Bairro" value="{{clienteObj.bairro}}">
+            </div>
+            <div class="col-sm-12 col-md-1 col-1" style="padding-bottom: 10px;">
+            </div>
+            <div class="col-sm-12 col-md-4 col-4" style="padding-bottom: 10px;">
+                <label >Cidade</label>
+                <input type="text" name="cidade" id="cidade" class="form-control" maxlength="200" placeholder="Cidade" value="{{clienteObj.cidade}}">
+            </div>
+            <div class="col-sm-12 col-md-3 col-3" style="padding-bottom: 10px;">
+                <label >Estado</label>                    
+                <input type="text" name="uf" id="uf" class="form-control" maxlength="200" placeholder="UF" value="{{clienteObj.uf}}">
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <br />
+                <input class="btn btn-outlined btn-secondary" style="float: left;" type="button" formaction="#" value="Voltar" onclick="goBack()"/>
+                <input class="btn btn-outlined btn-warning" style="float: right;" type="submit" value="Salvar" />
+            </div>
+    </form>
+</main>
+{% endblock %}
