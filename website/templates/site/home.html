@@ -52,6 +52,32 @@
           	zoom: 14 });
     });
     </script>
+    <style>    
+        @media (min-width: 768px) {  
+            .pdfFile{
+                height: 600px;
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {  
+            .container>.navbar-header{
+                padding-top: 5px !important;
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+            }
+
+            .container>.navbar-collapse{
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+            }
+            .pdfFile{
+                height: 600px;
+                width: 100%;
+                display: block;
+            }
+        }
+    </style>
 </head><!--/head-->
 <body>
     {% if msgConfirmacao %}
@@ -362,7 +388,7 @@
                         <div class="gap"></div>
         
                         <div id="meet-the-team" class="row">
-                            <div class="col-md-3 col-xs-6">
+                            <div class="col-md-3 col-sm-12">
                                 <div class="center team-member">
                                     <div class="team-content fade-up">
                                         <h5>Cargill Agrícola <small class="role muted">Três Lagoas/MS e Goiânia/GO</small></h5>
@@ -371,7 +397,7 @@
                                 </div>
                             </div>
         
-                            <div class="col-md-3 col-xs-6">
+                            <div class="col-md-3 col-sm-12">
                                 <div class="center team-member">
                                     <div class="team-content fade-up">
                                         <h5>Nexa Resources <small class="role muted">Vazante/MG <br />&nbsp;</small></h5>
@@ -379,7 +405,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-xs-6">
+                            <div class="col-md-3 col-sm-12">
                                 <div class="center team-member">
                                     <div class="team-content fade-up">
                                         <h5>Galvani <small class="role muted">Serra do Salitre/MG <br />&nbsp;</small></h5>
@@ -387,7 +413,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-xs-6">
+                            <div class="col-md-3 col-sm-12">
                                 <div class="center team-member">
                                     <div class="team-content fade-up">
                                         <h5>Hidrovias do Brasil <small class="role muted">Itaituba/PA<br />&nbsp;</small></h5>
@@ -395,7 +421,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-xs-6">
+                            <div class="col-md-3 col-sm-12">
                                 <div class="center team-member">
                                     <div class="team-content fade-up">
                                         <h5>Vale Fertilizantes <small class="role muted">Itabira/MG<br />&nbsp;</small></h5>
@@ -404,7 +430,7 @@
                                 </div>
                             </div>
         
-                            <div class="col-md-3 col-xs-6">
+                            <div class="col-md-3 col-sm-12">
                                 <div class="center team-member">
                                     <div class="team-content fade-up">
                                         <h5>Vale Fertilizantes <small class="role muted">Vitória/ES<br />&nbsp;<br />&nbsp;<br />&nbsp;</small></h5>
@@ -412,7 +438,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-xs-6">
+                            <div class="col-md-3 col-sm-12">
                                 <div class="center team-member">
                                     <div class="team-content fade-up">
                                         <h5>Fosfertil <small class="role muted">Uberaba/MG<br />&nbsp;</small></h5>
@@ -420,7 +446,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-xs-6">
+                            <div class="col-md-3 col-sm-12">
                                 <div class="center team-member">
                                     <div class="team-content fade-up">
                                         <h5>Valorec Sumitomo Tubos do Brasil <small class="role muted">Jeceaba/MG</small></h5>
@@ -428,9 +454,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-xs-6">
+                            <div class="col-md-3 col-sm-12">
                             </div>
-                            <div class="col-md-3 col-xs-6">
+                            <div class="col-md-3 col-sm-12">
                                 <div class="center team-member">
                                     <div class="team-content fade-up">
                                         <h5>Usina CSA<small class="role muted"> Janeiro/RJ <br />&nbsp;<br /><br />&nbsp;</small></h5>
@@ -438,7 +464,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-xs-6">
+                            <div class="col-md-3 col-sm-12">
                                 <div class="center team-member">
                                     <div class="team-content fade-up">
                                         <h5>Gerdau Aço Minas<small class="role muted">Ouro Branco/MG<br />&nbsp;</small></h5>
@@ -446,7 +472,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-xs-6">
+                            <div class="col-md-3 col-sm-12">
                             </div>
                         </div><!--/#meet-the-team-->
                         <div class="gap"></div>
@@ -465,9 +491,8 @@
                     <p>Conheça um pouco mais da nossa proposta</p>
                 </div>
                 <div class="gap"></div>
-                <div class="col-md-12">
-                    <object data="{% static 'pdf/propostaTecnica.pdf' %}" type="application/pdf" width="100%" height="600px">
-                        <p>Alternative text - include a link <a href="myfile.pdf">to the PDF!</a></p>
+                <div class="col-md-12 col-sm-12">
+                    <object data="{% static 'pdf/propostaTecnica.pdf' %}" class="pdfFiles" height="100%" width="100%" type="application/pdf">
                     </object>
                 </div>
             </section>
@@ -683,6 +708,7 @@
                                     <li><a href="#empresa">Empresa</a></li>
                                     <li><a href="#sobrenos">Sobre nós</a></li>
                                     <li><a href="#parceiros">Parceiros</a></li>
+                                    <li><a href="#proposta">Proposta</a></li>
                                     <li><a href="#trabalheConosco">Trabalhe conosco</a></li>
                                     <li><a href="/login">Login</a></li>
                                 </ul>
