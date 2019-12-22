@@ -22,4 +22,10 @@ urlpatterns = [
     url(r'^clientesNovo/', views.clientesNovo),
     url(r'^clientesVisualizar/', views.clientesVisualizar),
     url(r'^clientesEditar/', views.clientesEditar),
+    url(r'^orcamentos/', views.orcamentosHome),
+    url(r'^estoque/', views.estoqueHome),
+    url(r'^equipamentos/', views.equipamentosHome),
+    url(r'^equipamentosNovo/', views.equipamentosNovo),
+    url(r'^equipamentosVisualizar/', views.equipamentosVisualizar),
+    url(r'^equipamentosSalvar/', views.equipamentosSalvar),
 ]

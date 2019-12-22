@@ -1,0 +1,25 @@
+{% extends 'base_gerencia.html' %}
+{% block body %}
+{% load static %}
+<main>
+    <div class="row">
+        <div class="col menuPrincipal row" style="text-align: center;">
+            <div class="col item">
+                <a href="/gerencia/funcaoNovo/" class="gerenciaCaption">
+                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/budget.svg' %}"alt=""><br />
+                Novo Orçamento</a>
+            </div>
+            <div class="col item">
+                <a href="/gerencia/funcaoVisualizar" class="gerenciaCaption">
+                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/search.svg' %}"alt=""><br />
+                Visualizar Orçamentos</a>
+            </div>
+            <div class="col item">
+                <a href="#" onclick="goBack()" class="gerenciaCaption">
+                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/back.svg' %}"alt=""><br />
+                Voltar</a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

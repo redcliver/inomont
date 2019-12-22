@@ -27,13 +27,13 @@
                         <th scope="row">{{fornecedorModel.id}}</th>
                         <td>{{fornecedorModel.nome}}</td>
                         <td>{{fornecedorModel.contatoPrincipal}}</td>
-                        <td><input class="btn btn-outlined btn-warning" style="float: right;" type="submit" value="Visualizar" /></td>
+                        <td><button name="fornecedorID" value="{{fornecedorModel.id}}" class="btn btn-outlined btn-warning" style="float: right;" type="submit">Visualizar</button></td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
             <div class="col-sm-12 col-md-12 col-12">
-                <input class="btn btn-outlined btn-warning" style="float: right;" type="button" formaction="#" value="Voltar" onclick="goBack()"/>
+                <input class="btn btn-outlined btn-secondary" style="float: right;" type="button" formaction="#" value="Voltar" onclick="goBack()"/>
             </div>
         </div>
     </form>

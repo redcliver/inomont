@@ -22,18 +22,17 @@
                 </thead>
                 <tbody>
                     {% for funcaoModel in funcoes %}
-                    <input type="hidden" name="funcaoID" value="{{funcaoModel.id}}"/>
                     <tr>
                         <th scope="row">{{funcaoModel.id}}</th>
                         <td>{{funcaoModel.nome}}</td>
                         <td>{{funcaoModel.observacao}}</td>
-                        <td><input class="btn btn-outlined btn-warning" style="float: right;" type="submit" value="Editar" /></td>
+                        <td><button name="funcaoID" class="btn btn-outlined btn-warning" style="float: right;" type="submit" value="{{funcaoModel.id}}" >Editar</button></td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
             <div class="col-sm-12 col-md-12 col-12">
-                <input class="btn btn-outlined btn-warning" style="float: right;" type="button" formaction="#" value="Voltar" onclick="goBack()"/>
+                <input class="btn btn-outlined btn-secondary" style="float: right;" type="button" formaction="#" value="Voltar" onclick="goBack()"/>
             </div>
         </div>
     </form>

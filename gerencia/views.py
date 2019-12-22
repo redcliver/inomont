@@ -579,3 +579,143 @@ def clientesEditar(request):
                                                                 'msgConfirmacao':msgConfirmacao})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
+
+#Orçamentos
+def orcamentosHome(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+                
+            return render (request, 'gerencia/orcamentos/home.html', {'title':'Orçamentos', 
+                                                            'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+    
+#Estoque
+def estoqueHome(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+                
+            return render (request, 'gerencia/estoque/home.html', {'title':'Estoque', 
+                                                            'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+#Equipamentos
+def equipamentosHome(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+                
+            return render (request, 'gerencia/estoque/equipamentos/home.html', {'title':'Serviços', 
+                                                            'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+def equipamentosNovo(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            if request.method == 'POST' and request.POST.get('nome'):
+                nome = request.POST.get('nome')
+                observacao = request.POST.get('observacao')
+                novaFuncao = funcaoModel(nome=nome, observacao=observacao)
+                novaFuncao.save()
+                msgConfirmacao = "Novo serviço cadastrado com sucesso!"
+                return render (request, 'gerencia/estoque/equipamentos/equipamentoNovo.html', {'title':'Novo Serviços', 
+                                                                'msgTelaInicial':msgTelaInicial,
+                                                                'msgConfirmacao':msgConfirmacao})
+            return render (request, 'gerencia/estoque/equipamentos/equipamentoNovo.html', {'title':'Novo Serviços', 
+                                                            'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+def equipamentosVisualizar(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            funcoes = funcaoModel.objects.all().order_by('id')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            if request.method == 'POST' and request.POST.get('funcaoID'):
+                funcaoID = request.POST.get('funcaoID')
+                funcaoObj = funcaoModel.objects.filter(id=funcaoID).get()
+                return render (request, 'gerencia/estoque/equipamentos/equipamentoEditar.html', {'title':'Editar Serviço', 
+                                                                'msgTelaInicial':msgTelaInicial,
+                                                                'funcaoObj':funcaoObj})
+            return render (request, 'gerencia/estoque/equipamentos/equipamentoVisualizar.html', {'title':'Visualizar Serviço', 
+                                                                               'msgTelaInicial':msgTelaInicial,
+                                                                               'funcoes':funcoes})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+def equipamentosSalvar(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            funcoes = funcaoModel.objects.all().order_by('id')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            if request.method == 'POST' and request.POST.get('funcaoID'):
+                funcaoID = request.POST.get('funcaoID')
+                funcaoObj = funcaoModel.objects.filter(id=funcaoID).get()
+                nome = request.POST.get('nome')
+                observacao = request.POST.get('observacao')
+                funcaoObj.nome = nome
+                funcaoObj.observacao = observacao
+                funcaoObj.save()
+                msgConfirmacao = "Função editada com sucesso!"
+                return render (request, 'gerencia/estoque/equipamentos/equipamentoVisualizar.html', {'title':'Visualizar Serviços', 
+                                                                'msgTelaInicial':msgTelaInicial,
+                                                                'funcoes':funcoes,
+                                                                'msgConfirmacao':msgConfirmacao})
+            return render (request, 'gerencia/estoque/equipamentos/equipamentoVisualizar.html', {'title':'Visualizar Serviços', 
+                                                                               'msgTelaInicial':msgTelaInicial,
+                                                                               'funcoes':funcoes})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
