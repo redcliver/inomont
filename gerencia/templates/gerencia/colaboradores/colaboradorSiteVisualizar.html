@@ -3,39 +3,129 @@
 {% load static %}
 <main>
     {% if msgConfirmacao %}
-        <script>alert('{{msgConfirmacao}}')</script>
-    {% endif %}
-    <div class="col-sm-12 col-md-12 col-12">
-        <img style="height: 80px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/funcaoAdd.svg' %}"alt="">&nbsp;<h3>Visualizar Colaborador</h3><br><br>
-    </div>
-    <form method="POST" action="/gerencia/colaboradoresSiteVisualizar/" id="">
-        {% csrf_token %}
-        <div class="row">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col" width="10%">#</th>
-                        <th scope="col" width="30%">Nome</th>
-                        <th scope="col" width="50%">Função Pretendida</th>
-                        <th scope="col" width="10%" style="text-align: center;">Visualizar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for cadastroSite in colaboradoresSite %}
-                    <tr>
-                        <td><input type="hidden" name="colaboradorID" value="{{cadastroSite.id}}"/></td>
-                        <td scope="row">{{cadastroSite.id}}</td>
-                        <td>{{cadastroSite.nome}}</td>
-                        <td>{{cadastroSite.get_funcao_display}}</td>
-                        <td><input class="btn btn-outlined btn-warning" style="float: right;" type="submit" value="Visualizar" /></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <div class="col-sm-12 col-md-12 col-12">
-                <input class="btn btn-outlined btn-warning" style="float: right;" type="button" value="Voltar" onclick="goBack()"/>
+		<script>alert('{{msgConfirmacao}}')</script>
+	{% endif %}
+    <div class="row">
+        <form method="post" action="#" id="">
+            {% csrf_token %}
+            <input type="hidden" name="colaboradorID" value="{{colaboradorObj.id}}" />
+            <div class="row">
+                <div class="col-sm-12 col-md-5 col-5">
+                    <label >Nome</label>
+                    <input type="text" name="nome" class="form-control" maxlength="300" placeholder="Nome" value="{{colaboradorObj.nome}}" disabled>
+                </div>
+                <div class="col-sm-12 col-md-7 col-7">
+                    <label >Sobrenome</label>
+                    <input type="text" name="sobrenome" class="form-control" maxlength="400" placeholder="Sobrenome" value="{{colaboradorObj.sobrenome}}" disabled>
+                </div>
+                <div class="col-sm-12 col-md-6 col-6">
+                    <label >CPF</label>
+                    <input type="text" class="form-control" name="cpf" maxlength="14" onkeydown="javascript: fMasc( this, mCPF );" value="{{colaboradorObj.cpf}}" disabled>
+                </div>
+                <div class="col-sm-12 col-md-6 col-6">
+                    <label >RG</label>
+                    <input type="text" class="form-control" name="rg" maxlength="13" onkeydown="javascript: fMasc( this, mRG );" value="{{colaboradorObj.rg}}" disabled>
+                </div>
+                <div class="col-sm-12 col-md-4 col-4">
+                    <label >Data de Nasc.</label>
+                    <input type="text" name="dataNasc" class="form-control" value="{{colaboradorObj.dataNasc|date:"d/m/Y"}}" disabled>
+                </div>
+                <div class="col-sm-12 col-md-8 col-8">
+                    <label >E-mail</label>
+                    <input type="email" name="email" maxlength="300" class="form-control" value="{{colaboradorObj.email}}" disabled>
+                </div>
+                <div class="col-sm-12 col-md-6 col-6">
+                    <label >Celular</label>
+                    <input type="text" class="form-control" name="celular" maxlength="14" onkeydown="javascript: fMasc( this, mTel );" value="{{colaboradorObj.celular}}" disabled>
+                </div>
+                <div class="col-sm-12 col-md-6 col-6">
+                    <label >Telefone</label>
+                    <input type="text" class="form-control" name="telefone" maxlength="14" onkeydown="javascript: fMasc( this, mTel );" value="{{colaboradorObj.telefone}}" disabled>
+                </div>
+                <div class="col-sm-12 col-md-4 col-4">
+                    <label >Estado civil</label>
+                    <input type="text" class="form-control" name="estadoCivil" maxlength="300" value="{{colaboradorObj.get_estadoCivil_display}}" disabled>
+                </div>
+
+                <div class="col-sm-12 col-md-4 col-4">
+                    <label >Função pretendida </label>
+                    <input type="text" class="form-control" name="funcao" maxlength="300" value="{{colaboradorObj.funcao.nome}}" disabled>
+                </div>
+                <div class="col-sm-12 col-md-4 col-4">
+                    <label >Tempo de experiência </label>
+                    <input type="text" class="form-control" name="tempoExperiencia" maxlength="300" value="{{colaboradorObj.get_experiencia_display}}" disabled>
+                </div>
+                <div class="col-sm-12 col-md-4 col-4">
+                    <label >Escolaridade </label>
+                    <input type="text" class="form-control" name="escolaridade" maxlength="300" value="{{colaboradorObj.get_escolaridade_display}}" disabled>
+                </div>
+                <div class="col-sm-12 col-md-4 col-4">
+                    <label >Reside em Três Lagoas ?</label>
+                    <input type="text" class="form-control" name="resideEmTresLagoas" maxlength="300" value="{{colaboradorObj.get_ehDeTresLagoas_display}}" disabled>
+                </div> 
+                <div class="col-sm-12 col-md-4 col-4">
+                    <label >Já trabalhou na Inomont ?</label>
+                    <input type="text" class="form-control" name="trabalhouInomont" maxlength="300" value="{{colaboradorObj.get_trabalhouInomont_display}}" disabled>
+                </div> 
+                <div class="col-sm-12 col-md-12 col-12">
+                    <label >Por quê a Inomont deve te contratar?</label>
+                    <input type="text" class="form-control" name="pqInomont" maxlength="300" value="{{colaboradorObj.pqInomont}}" disabled><br>
+                </div> 
+                <div class="col-md-12">
+                    <h4>Experiência Profissional 1</h4>
+                </div>
+                <div class="col-sm-4 col-md-4 col-4">
+                    <label >Empresa</label>
+                    <input type="text" class="form-control" name="empresa1" maxlength="300" value="{{colaboradorObj.empresa1}}" disabled>
+                </div> 
+                <div class="col-sm-4 col-md-4 col-4">
+                    <label >Função</label>
+                    <input type="text" class="form-control" name="funcao1" maxlength="300" value="{{colaboradorObj.funcao1}}" disabled>
+                </div> 
+                <div class="col-sm-12 col-md-4 col-4">
+                    <label >Periodo </label>
+                    <input type="text" class="form-control" name="periodo1" maxlength="300" value="{{colaboradorObj.get_periodo1_display}}" disabled><br>
+                    <br>
+                </div>
+                <div class="col-md-12">
+                    <h4>Experiência Profissional 2</h4>
+                </div>
+                <div class="col-sm-4 col-md-4 col-4">
+                    <label >Empresa</label>
+                    <input type="text" class="form-control" name="empresa2" maxlength="300" value="{{colaboradorObj.empresa2}}" disabled>
+                </div> 
+                <div class="col-sm-4 col-md-4 col-4">
+                    <label >Função</label>
+                    <input type="text" class="form-control" name="funcao2" maxlength="300" value="{{colaboradorObj.funcao2}}" disabled>
+                </div> 
+                <div class="col-sm-12 col-md-4 col-4">
+                    <label >Periodo </label>
+                    <input type="text" class="form-control" name="periodo2" maxlength="300" value="{{colaboradorObj.get_periodo2_display}}" disabled><br>
+                    <br>
+                </div>
+                <div class="col-md-12">
+                    <h4>Experiência Profissional 3</h4>
+                </div>
+                <div class="col-sm-4 col-md-4 col-4">
+                    <label >Empresa</label>
+                    <input type="text" class="form-control" name="empresa3" maxlength="300" value="{{colaboradorObj.empresa3}}" disabled>
+                </div> 
+                <div class="col-sm-4 col-md-4 col-4">
+                    <label >Função</label>
+                    <input type="text" class="form-control" name="funcao3" maxlength="300" value="{{colaboradorObj.funcao3}}" disabled>
+                </div> 
+                <div class="col-sm-12 col-md-4 col-4">
+                    <label >Periodo </label>
+                    <input type="text" class="form-control" name="periodo3" maxlength="300" value="{{colaboradorObj.get_periodo3_display}}" disabled>
+                    <br>
+                </div>
+                <br>
+                <div class="col-sm-12 col-md-12 col-12">
+                    <br>
+                    <input class="btn btn-outlined btn-warning" style="float: right;" type="button" value="Voltar" onclick="goBack()"/>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </main>
 {% endblock %}

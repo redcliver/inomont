@@ -160,7 +160,6 @@ def colaboradoresSite(request):
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
-
 def colaboradoresSiteVisualizar(request):
     if request.user.is_authenticated:
         if request.user.last_name == "GERENCIA":
@@ -175,19 +174,20 @@ def colaboradoresSiteVisualizar(request):
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
             elif now >= 18 and now < 4:
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+
             if request.method == "POST" and request.POST.get('colaboradorID') != None:
                 colaboradorID = request.POST.get('colaboradorID')
-                colaboradorObj = cadastroSite.objects.filter(id=colaboradorID).get()
-                return render (request, 'gerencia/colaboradores/colaboradorSiteVisualizar1.html', {'title':'Visualizar Colaborador', 
+                colaboradorObj = cadastroSite.objects.all().filter(id=colaboradorID).get()
+                return render (request, 'gerencia/colaboradores/colaboradorSiteVisualizar.html', {'title':'Visualizar Colaborador', 
                                                                                             'msgTelaInicial':msgTelaInicial,
                                                                                             'colaboradorObj':colaboradorObj})            
                 
             return render (request, 'gerencia/colaboradores/colaboradorSiteVisualizar.html', {'title':'Visualizar Colaborador', 
                                                             'msgTelaInicial':msgTelaInicial,
-                                                            'colaboradoresSite':colaboradoresSite})
+                                                            'colaboradoresSite':colaboradoresSite,
+                                                            'colaboradorObj':colaboradorObj})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
-
 
 def fornecedores(request):
     if request.user.is_authenticated:
@@ -206,7 +206,6 @@ def fornecedores(request):
                                                             'msgTelaInicial':msgTelaInicial})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
-
 
 def fornecedoresNovo(request):
     if request.user.is_authenticated:
