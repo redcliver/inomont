@@ -109,8 +109,14 @@ def colaboradoresNovo(request):
                 return render (request, 'gerencia/colaboradores/colaboradorNovo.html', {'title':'Novo Colaborador', 
                                                                                         'msgTelaInicial':msgTelaInicial,
                                                                                         'msgConfirmacao':msgConfirmacao})
+            if request.method == 'GET' and request.GET.get('colaboradorSiteID') != None:
+                colaboradorSiteID = request.GET.get('colaboradorSiteID')
+                colaboradorSiteObj = cadastroSite.objects.filter(id=colaboradorSiteID).get()
+                todasFuncoes = funcaoModel.objects.all().order_by('nome')
             return render (request, 'gerencia/colaboradores/colaboradorNovo.html', {'title':'Novo Colaborador', 
-                                                                                    'msgTelaInicial':msgTelaInicial})
+                                                                                    'msgTelaInicial':msgTelaInicial,
+                                                                                    'colaboradorSiteObj':colaboradorSiteObj,
+                                                                                    'todasFuncoes':todasFuncoes})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 

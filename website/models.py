@@ -67,7 +67,7 @@ class cadastroSite(models.Model):
         ('5', 'Viúvo(a)'),
     )
     EX = (
-        ('1', 'Menos de 1 ano'),
+        ('-1', 'Menos de 1 ano'),
         ('2', '1 ano'),
         ('3', '2 anos'),
         ('4', '3 anos'),
@@ -95,7 +95,7 @@ class cadastroSite(models.Model):
     id = models.AutoField(primary_key=True)
     estado = models.CharField(max_length=1, choices=ES, default=1)
     estadoCivil = models.CharField(max_length=1, choices=EC, default=1)
-    experiencia = models.CharField(max_length=1, choices=EX)
+    experiencia = models.CharField(max_length=2, choices=EX)
     escolaridade = models.CharField(max_length=1, choices=SC, default=1)
     ehDeTresLagoas = models.CharField(max_length=1, choices=SN, default=1, null=True, blank=True)
     trabalhouInomont = models.CharField(max_length=1, choices=SN, default=1, null=True, blank=True)
@@ -105,7 +105,7 @@ class cadastroSite(models.Model):
     email = models.CharField(max_length=300, null=True, blank=True)
     cpf = models.CharField(max_length=14, null=True, blank=True)
     rg = models.CharField(max_length=15, null=True, blank=True)
-    funcao = models.ForeignKey(funcaoModel, on_delete="models.CASCADE")
+    funcao = models.ForeignKey(funcaoModel, on_delete=models.CASCADE)
     telefone = models.CharField(max_length=14, null=True, blank=True)
     celular = models.CharField(max_length=14, null=True, blank=True)
     empresa1 = models.CharField(max_length=300, null=True, blank=True)
@@ -150,6 +150,7 @@ class colaboradorModel(models.Model):
         ('4', 'Desligado'),
     )
     id = models.AutoField(primary_key=True)
+    cadastroBase = models.ForeignKey(cadastroSite, on_delete=models.CASCADE, null=True, blank=True)
     nome = models.CharField(max_length=200)
     sobrenome = models.CharField(max_length=200, null=True, blank=True)
     cpf = models.CharField(max_length=30, null=True, blank=True)

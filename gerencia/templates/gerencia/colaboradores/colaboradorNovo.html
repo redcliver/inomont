@@ -8,52 +8,42 @@
     <div class="row">
         <form method="post" action="/gerencia/colaboradoresNovo/" id="">
             {% csrf_token %}
+            <input type="hidden" name="colaboradorSiteID" value="{{colaboradorSiteObj.nome}}" />
             <div class="row">
                 <div class="col-sm-12 col-md-5 col-5">
                     <label >Nome</label>
-                    <input type="text" name="nome" class="form-control" maxlength="300" placeholder="Nome">
+                    <input type="text" name="nome" class="form-control" maxlength="300" placeholder="Nome" value="{{colaboradorSiteObj.nome}}">
                 </div>
                 <div class="col-sm-12 col-md-7 col-7">
                     <label >Sobrenome</label>
-                    <input type="text" name="sobrenome" class="form-control" maxlength="400" placeholder="Sobrenome">
+                    <input type="text" name="sobrenome" class="form-control" maxlength="400" placeholder="Sobrenome" value="{{colaboradorSiteObj.sobrenome}}"><br />
                 </div>
                 <div class="col-sm-12 col-md-6 col-6">
                     <label >CPF</label>
-                    <input type="text" class="form-control" name="cpf" maxlength="14" onkeydown="javascript: fMasc( this, mCPF );">
+                    <input type="text" class="form-control" name="cpf" maxlength="14" onkeydown="javascript: fMasc( this, mCPF );" value="{{colaboradorSiteObj.cpf}}">
                 </div>
                 <div class="col-sm-12 col-md-6 col-6">
                     <label >RG</label>
-                    <input type="text" class="form-control" name="rg" maxlength="13" onkeydown="javascript: fMasc( this, mRG );">
+                    <input type="text" class="form-control" name="rg" maxlength="13" onkeydown="javascript: fMasc( this, mRG );" value="{{colaboradorSiteObj.rg}}"><br />
                 </div>
                 <div class="col-sm-12 col-md-4 col-4">
                     <label >Data de Nasc.</label>
-                    <input type="date" name="dataNasc" value="{{today}}" class="form-control">
+                    <input type="date" name="dataNasc" value="{{colaboradorSiteObj.dataNasc|date:"Y-m-d"}}" class="form-control">
                 </div>
                 <div class="col-sm-12 col-md-8 col-8">
                     <label >E-mail</label>
-                    <input type="email" name="email" maxlength="300" class="form-control">
+                    <input type="email" name="email" maxlength="300" class="form-control" value="{{colaboradorSiteObj.email}}"><br />
                 </div>
                 <div class="col-sm-12 col-md-6 col-6">
                     <label >Celular</label>
-                    <input type="text" class="form-control" name="celular" maxlength="14" onkeydown="javascript: fMasc( this, mTel );">
+                    <input type="text" class="form-control" name="celular" maxlength="14" onkeydown="javascript: fMasc( this, mTel );" value="{{colaboradorSiteObj.telefone}}">
                 </div>
                 <div class="col-sm-12 col-md-6 col-6">
                     <label >Telefone</label>
-                    <input type="text" class="form-control" name="telefone" maxlength="14" onkeydown="javascript: fMasc( this, mTel );">
+                    <input type="text" class="form-control" name="telefone" maxlength="14" onkeydown="javascript: fMasc( this, mTel );" value="{{colaboradorSiteObj.celular}}"><br />
                 </div>
                 <div class="col-sm-12 col-md-4 col-4">
-                    <label >Estado civil</label>
-                    <select name="estadoCivil" id="estate" class="custom-select form-control">
-                        <option selected value="solteiro">Solteiro(a)</option>
-                        <option value="casado">Casado(a)</option>
-                        <option value="separado">Separado(a)</option>
-                        <option value="divorciado">Divorciado(a)</option>
-                        <option value="viuvo">Viúvo(a)</option>
-                    </select>
-                </div>
-
-                <div class="col-sm-12 col-md-4 col-4">
-                    <label >Função pretendida </label>
+                    <label >Função</label>
                     <select name="funcaoId" id="estate" class="custom-select form-control">
                             <option selected disabled>Funções</option>
                         {% if funcaoModel in funcoes %}
@@ -61,55 +51,96 @@
                         {% endif %}
                     </select>
                 </div>
-                <div class="col-sm-12 col-md-4 col-4">
-                    <label >Tempo de experiência </label>
-                    <select name="tempoExperiencia" id="estate" class="custom-select form-control">
-                        <option  value="-1">Menos de 1 ano</option>
-                        <option selected value="1">1 ano</option>
-                        <option  value="2">2 ano</option>
-                        <option  value="3">3 ano</option>
-                        <option  value="4">Mais de 3 anos</option>
-                    </select>
-                </div>
-                <div class="col-sm-12 col-md-4 col-4">
-                    <label >Escolaridade </label>
-                    <select name="escolaridade" id="estate" class="custom-select form-control">
-                        <option selected value="1">Ensino Fundamental Incompleto</option>
-                        <option  value="2">Ensino Fundamental Completo</option>
-                        <option  value="3">Ensino Médio Incompleto</option>
-                        <option  value="4">Ensino Médio Completo</option>
-                        <option  value="5">Superior Incompleto</option>
-                        <option  value="6">Superior Completo</option>
-                    </select>
-                </div>
-                <div class="col-sm-12 col-md-4 col-4">
-                    <label >Reside em Três Lagoas ?</label>
-                    <select name="resideEmTresLagoas" id="estate" class="custom-select form-control">
-                        <option selected value="1">Sim</option>
-                        <option  value="2">Não</option>
-                    </select>
-                </div> 
-                <div class="col-sm-12 col-md-4 col-4">
-                    <label >Já trabalhou na Inomont ?</label>
-                    <select name="trabalhouInomont" id="estate" class="custom-select form-control">
-                        <option  value="1">Sim</option>
-                        <option selected value="2">Não</option>
-                    </select>
-                </div> 
-                <div class="col-sm-12 col-md-12 col-12">
-                    <label >Por quê a Inomont deve te contratar?</label>
-                    <input type="text" class="form-control" name="pqInomont" maxlength="300"><br>
-                </div> 
+                {% if colaboradorSiteObj %}
+                    <div class="col-sm-12 col-md-4 col-4">
+                        <label >Tempo de experiência </label>
+                        <select name="tempoExperiencia" id="estate" class="custom-select form-control">
+                            <option  value="-1">Menos de 1 ano</option>
+                            <option selected value="1">1 ano</option>
+                            <option  value="2">2 ano</option>
+                            <option  value="3">3 ano</option>
+                            <option  value="4">Mais de 3 anos</option>
+                        </select><br />
+                    </div>
+                {% else %}
+                    {% if colaboradorSiteObj.experiencia == 1 %}
+                        <div class="col-sm-12 col-md-4 col-4">
+                            <label >Tempo de experiência </label>
+                            <select name="tempoExperiencia" id="estate" class="custom-select form-control">
+                                <option selected value="-1">Menos de 1 ano</option>
+                                <option  value="1">1 ano</option>
+                                <option  value="2">2 ano</option>
+                                <option  value="3">3 ano</option>
+                                <option  value="4">Mais de 3 anos</option>
+                            </select><br />
+                        </div>
+                    {% endif %}
+                    {% if colaboradorSiteObj.experiencia == 2 %}
+                        <div class="col-sm-12 col-md-4 col-4">
+                            <label >Tempo de experiência </label>
+                            <select name="tempoExperiencia" id="estate" class="custom-select form-control">
+                                <option  value="-1">Menos de 1 ano</option>
+                                <option selected value="1">1 ano</option>
+                                <option  value="2">2 ano</option>
+                                <option  value="3">3 ano</option>
+                                <option  value="4">Mais de 3 anos</option>
+                            </select><br />
+                        </div>
+                    {% endif %}
+                    {% if colaboradorSiteObj.experiencia == 3 %}
+                        <div class="col-sm-12 col-md-4 col-4">
+                            <label >Tempo de experiência </label>
+                            <select name="tempoExperiencia" id="estate" class="custom-select form-control">
+                                <option  value="-1">Menos de 1 ano</option>
+                                <option  value="1">1 ano</option>
+                                <option  value="2">2 ano</option>
+                                <option selected value="3">3 ano</option>
+                                <option  value="4">Mais de 3 anos</option>
+                            </select><br />
+                        </div>
+                    {% endif %}
+                    {% if colaboradorSiteObj.experiencia == 4 %}
+                        <div class="col-sm-12 col-md-4 col-4">
+                            <label >Tempo de experiência </label>
+                            <select name="tempoExperiencia" id="estate" class="custom-select form-control">
+                                <option  value="-1">Menos de 1 ano</option>
+                                <option  value="1">1 ano</option>
+                                <option  value="2">2 ano</option>
+                                <option  value="3">3 ano</option>
+                                <option selected value="4">Mais de 3 anos</option>
+                            </select><br />
+                        </div>
+                    {% endif %}
+                {% endif %}
+                {% if colaboradorSiteObj.ehDeTresLagoas == 1 %}
+                    <div class="col-sm-12 col-md-4 col-4">
+                        <label >Reside em Três Lagoas ?</label>
+                        <select name="resideEmTresLagoas" id="estate" class="custom-select form-control">
+                            <option selected value="1">Sim</option>
+                            <option  value="2">Não</option>
+                        </select><br />
+                    </div> 
+                {% endif %}
+                {% if colaboradorSiteObj.ehDeTresLagoas == 2 %}
+                    <div class="col-sm-12 col-md-4 col-4">
+                        <label >Reside em Três Lagoas ?</label>
+                        <select name="resideEmTresLagoas" id="estate" class="custom-select form-control">
+                            <option  value="1">Sim</option>
+                            <option selected value="2">Não</option>
+                        </select><br />
+                    </div> 
+                {% endif %}
                 <div class="col-md-12">
+                    <br />
                     <h4>Experiência Profissional 1</h4>
                 </div>
                 <div class="col-sm-4 col-md-4 col-4">
                     <label >Empresa</label>
-                    <input type="text" class="form-control" name="empresa1" maxlength="300">
+                    <input type="text" class="form-control" name="empresa1" maxlength="300" value="{{colaboradorSiteObj.empresa1}}">
                 </div> 
                 <div class="col-sm-4 col-md-4 col-4">
                     <label >Função</label>
-                    <input type="text" class="form-control" name="funcao1" maxlength="300">
+                    <input type="text" class="form-control" name="funcao1" maxlength="300" value="{{colaboradorSiteObj.funcao1}}">
                 </div> 
                 <div class="col-sm-12 col-md-4 col-4">
                     <label >Periodo </label>
@@ -123,15 +154,16 @@
                     <br>
                 </div>
                 <div class="col-md-12">
+                    <br />
                     <h4>Experiência Profissional 2</h4>
                 </div>
                 <div class="col-sm-4 col-md-4 col-4">
                     <label >Empresa</label>
-                    <input type="text" class="form-control" name="empresa2" maxlength="300">
+                    <input type="text" class="form-control" name="empresa2" maxlength="300" value="{{colaboradorSiteObj.empresa2}}">
                 </div> 
                 <div class="col-sm-4 col-md-4 col-4">
                     <label >Função</label>
-                    <input type="text" class="form-control" name="funcao2" maxlength="300">
+                    <input type="text" class="form-control" name="funcao2" maxlength="300" value="{{colaboradorSiteObj.funcao2}}">
                 </div> 
                 <div class="col-sm-12 col-md-4 col-4">
                     <label >Periodo </label>
@@ -144,33 +176,11 @@
                     </select>
                     <br>
                 </div>
-                <div class="col-md-12">
-                    <h4>Experiência Profissional 3</h4>
-                </div>
-                <div class="col-sm-4 col-md-4 col-4">
-                    <label >Empresa</label>
-                    <input type="text" class="form-control" name="empresa3" maxlength="300">
-                </div> 
-                <div class="col-sm-4 col-md-4 col-4">
-                    <label >Função</label>
-                    <input type="text" class="form-control" name="funcao3" maxlength="300">
-                </div> 
-                <div class="col-sm-12 col-md-4 col-4">
-                    <label >Periodo </label>
-                    <select name="periodo3" id="estate" class="custom-select form-control">
-                        <option selected value="1">De 1 a 6 meses</option>
-                        <option  value="2">De 6 a 12 meses</option>
-                        <option  value="3">De 1 ano a 1 ano e meio</option>
-                        <option  value="4">De 1 ano e meio a 2 anos</option>
-                        <option  value="5">Mais de 2 anos</option>
-                    </select>
-                    <br>
-                </div>
                 <br>
                 <div class="col-sm-12 col-md-12 col-12">
                     <br>
-                    <input class="btn btn-outlined btn-warning" style="float: left;" type="button" value="Voltar" onclick="goBack()"/>
-                    <input class="btn btn-outlined btn-warning" style="float: right;" type="submit" value="Enviar" />
+                    <input class="btn btn-outlined btn-secondary float-left" type="button" formaction="#" value="Voltar" onclick="goBack()"/>
+                    <input class="btn btn-outlined btn-warning float-right" type="button" formaction="#" value="Efetivar" />
                 </div>
             </div>
         </form>
