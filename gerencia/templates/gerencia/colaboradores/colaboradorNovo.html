@@ -47,22 +47,45 @@
                     <select name="funcaoId" id="estate" class="custom-select form-control">
                             <option selected disabled>Funções</option>
                         {% if funcaoModel in funcoes %}
-                            <option selected value="{{funcaoModel.id}}">{{funcaoModel.nome}}</option>
+                            <option value="{{funcaoModel.id}}">{{funcaoModel.nome}}</option>
                         {% endif %}
                     </select>
                 </div>
+                <div class="col-sm-12 col-md-4 col-4">
+                    <label >Status</label>
+                    <select name="statusID" id="estate" class="custom-select form-control">
+                            <option selected disabled>Status</option>
+                            <option  value="1">Disponível</option>
+                            <option  value="2">Alocado</option>
+                            <option  value="3">Afastado</option>
+                            <option  value="4">Desligado</option>
+                    </select>
+                </div>
+                <div class="col-sm-12 col-md-4 col-4">
+                    <label >Data de Admissão</label>
+                    <input type="date" name="dataAdmissao" class="form-control">
+                </div>
+                <div class="col-sm-12 col-md-8 col-8">
+                    <br/>
+                    <label >Encarregado</label>
+                    <select name="encarregado" id="estate" class="custom-select form-control">
+                        <option selected disabled>Encarregaos</option>
+                        {% if colaboradorModel in encarregados %}
+                            <option  value="{{colaboradorModel.id}}">{{colaboradorModel.nome}}</option>
+                        {% endif %}
+                    </select>                
+                </div>
+                <div class="col-sm-12 col-md-4 col-4">
+                    <br/>
+                    <label >Setor</label>
+                    <select name="setor" id="estate" class="custom-select form-control">
+                        <option selected disabled>Setores</option>
+                        {% if setorModel in setores %}
+                            <option  value="{{setorModel.id}}">{{setorModel.nome}}</option>
+                        {% endif %}
+                    </select>                
+                </div>
                 {% if colaboradorSiteObj %}
-                    <div class="col-sm-12 col-md-4 col-4">
-                        <label >Tempo de experiência </label>
-                        <select name="tempoExperiencia" id="estate" class="custom-select form-control">
-                            <option  value="-1">Menos de 1 ano</option>
-                            <option selected value="1">1 ano</option>
-                            <option  value="2">2 ano</option>
-                            <option  value="3">3 ano</option>
-                            <option  value="4">Mais de 3 anos</option>
-                        </select><br />
-                    </div>
-                {% else %}
                     {% if colaboradorSiteObj.experiencia == 1 %}
                         <div class="col-sm-12 col-md-4 col-4">
                             <label >Tempo de experiência </label>
