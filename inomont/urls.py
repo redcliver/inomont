@@ -30,7 +30,7 @@ urlpatterns = [
     url(r'^login', LoginView.as_view(template_name='site/login.html'), name="Login"),
     url(r'^logout', LogoutView.as_view(template_name='site/home.html'), name="Home"),
 
-    url(r'^$', include('website.urls')),
+    url(r'^', include('website.urls')),
     path('admin/', admin.site.urls),
 
     # Controle Gerencia
