@@ -73,4 +73,4 @@ def home(request):
 
 
 def proposta(request):
-    return render(request, 'site/proposta.html')
+    return render(request, 'site/proposta.html', {'title':'Proposta'})
