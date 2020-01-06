@@ -70,3 +70,7 @@ def home(request):
                                               'colabTrabalhando':colabTrabalhando,
                                               'trabRealizado':trabRealizado,
                                               'todasFuncoes':todasFuncoes})
+
+
+def proposta(request):
+    return render(request, 'site/proposta.html', {'title':'Proposta'})
