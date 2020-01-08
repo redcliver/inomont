@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^equipamentosNovo/', views.equipamentosNovo),
     url(r'^equipamentosVisualizar/', views.equipamentosVisualizar),
     url(r'^equipamentosSalvar/', views.equipamentosSalvar),
+    url(r'^contas/', views.contasHome),
 ]

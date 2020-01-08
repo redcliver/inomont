@@ -1,0 +1,30 @@
+{% extends 'base_gerencia.html' %}
+{% block body %}
+{% load static %}
+<main>
+    <div class="row">
+        <div class="col menuPrincipal row" style="text-align: center;">
+            <div class="col item">
+                <a href="/gerencia/estoque/" class="gerenciaCaption">
+                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/pagar.svg' %}"alt=""><br />
+                Contas a pagar</a>
+            </div>
+            <div class="col item">
+                <a href="/gerencia/estoque/" class="gerenciaCaption">
+                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/receber.svg' %}"alt=""><br />
+                Contas a receber</a>
+            </div>
+            <div class="col item">
+                <a href="/gerencia/estoque/" class="gerenciaCaption">
+                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/epi.svg' %}"alt=""><br />
+                Relatórios</a>
+            </div>
+            <div class="col item">
+                <a href="#" onclick="goBack()" class="gerenciaCaption">
+                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/back.svg' %}"alt=""><br />
+                Voltar</a>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
