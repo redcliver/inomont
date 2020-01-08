@@ -29,4 +29,13 @@ urlpatterns = [
     url(r'^equipamentosVisualizar/', views.equipamentosVisualizar),
     url(r'^equipamentosSalvar/', views.equipamentosSalvar),
     url(r'^contas/', views.contasHome),
+    url(r'^contasRelatorios/', views.contasRelatorioHome),
+    url(r'^contasPagar/', views.contasPagarHome),
+    url(r'^contasReceber/', views.contasReceberHome),
+    url(r'^contasPagarNovo/', views.contasPagarNovo),
+    url(r'^contasReceberNovo/', views.contasReceberNovo),
+    url(r'^caixaHome/', views.caixaHome),
+    url(r'^caixaEntradaNovo/', views.caixaEntradaNovo),
+    url(r'^caixaSaidaNovo/', views.caixaSaidaNovo),
+    url(r'^balancoHome/', views.balancoHome),
 ]

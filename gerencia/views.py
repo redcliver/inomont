@@ -743,3 +743,164 @@ def contasHome(request):
                                                             'msgTelaInicial':msgTelaInicial})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
+
+
+def contasRelatorioHome(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            return render (request, 'gerencia/contas/relatorios.html', {'title':'Relatórios', 
+                                                            'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+def contasPagarHome(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            return render (request, 'gerencia/contas/pagar/home.html', {'title':'Contas a pagar', 
+                                                            'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+
+def contasReceberHome(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            return render (request, 'gerencia/contas/receber/home.html', {'title':'Contas a receber', 
+                                                            'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+
+def contasPagarNovo(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            return render (request, 'gerencia/contas/pagar/pagarNovo.html', {'title':'Nova conta a pagar', 
+                                                            'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+
+def contasReceberNovo(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            return render (request, 'gerencia/contas/receber/receberNovo.html', {'title':'Nova conta a receber', 
+                                                            'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+#Caixa
+def caixaHome(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            return render (request, 'gerencia/caixa/home.html', {'title':'Caixa', 
+                                                            'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+
+def caixaEntradaNovo(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            return render (request, 'gerencia/caixa/entradaNovo.html', {'title':'Nova entrada', 
+                                                            'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+
+def caixaSaidaNovo(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            return render (request, 'gerencia/caixa/saidaNovo.html', {'title':'Nova saída', 
+                                                            'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+
+def balancoHome(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            return render (request, 'gerencia/caixa/balanco.html', {'title':'Balanço', 
+                                                            'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})

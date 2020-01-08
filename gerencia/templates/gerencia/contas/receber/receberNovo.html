@@ -1,0 +1,39 @@
+{% extends 'base_gerencia.html' %}
+{% block body %}
+{% load static %}
+<main>
+    {% if msgConfirmacao %}
+		<script>alert('{{msgConfirmacao}}')</script>
+	{% endif %}
+        <div class="col-sm-12 col-md-12 col-12">
+            <img style="height: 80px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/receber.svg' %}"alt="">&nbsp;<h3>Nova conta a receber</h3><br><br>
+        </div>
+        <form method="POST" action="/gerencia/contasReceberNovo/" id="">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-6 col-md-6"style="padding-bottom: 10px;">
+                    <label >Nome</label>
+                    <input type="text" name="nome" class="form-control" maxlength="200" placeholder="Nome">
+                </div>
+                <div class="col-sm-6 col-md-3"style="padding-bottom: 10px;">
+                    <label >Vencimento</label>
+                    <input type="date" name="vencimento" class="form-control">
+                </div>
+                <div class="col-sm-6 col-md-3 "style="padding-bottom: 10px; padding-top: 19px; text-align: center;">
+                </div>                
+                <div class="col-sm-12 col-md-6" style="padding-bottom: 10px;">
+                    <label >Observação</label>
+                    <input type="text" name="observacao" class="form-control" maxlength="300" placeholder="Observação"><br>
+                </div>         
+                <div class="col-sm-12 col-md-3" style="padding-bottom: 10px;">
+                    <label >Valor</label>
+                    <input type="number" name="valor" value="0.00" class="form-control" step='0.01' maxlength="10" placeholder="0.00"><br>
+                </div>
+                <div class="col-sm-12 col-md-12 col-12">
+                    <input class="btn btn-outlined btn-secondary" style="float: left;" formaction="#" type="button" value="Voltar" onclick="goBack()"/>
+                    <input class="btn btn-outlined btn-warning" style="float: right;" type="submit" value="Salvar" />
+                </div>
+            </div>
+        </form>
+</main>
+{% endblock %}
