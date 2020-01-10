@@ -1,0 +1,28 @@
+{% extends 'base_gerencia.html' %}
+
+{% block body %}
+{% load static %}
+{% if msgConfirmacao %}
+    <script>alert('{{msgConfirmacao}}')</script>
+{% endif %}
+<h1>Editar Conta</h1><hr /><br />
+    <form method="POST" action="/gerencia/contasPagarVisualizar">
+    {%csrf_token%}
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <select name="contaID" class="form-control" required>
+                <option disabled selected > -- Conta -- Valor -- Data Venc. -- </option>
+                {% for contaPagarModel in contas %}
+                    <option value="{{contaPagarModel.id}}">{{contaPagarModel.nome}} -- R${{contaPagarModel.valor}} -- {{contaPagarModel.dataVencimento|date:"d/m/Y"}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <input class="btn btn-outlined btn-secondary" style="float: left;" formaction="#" type="button" value="Voltar" onclick="goBack()"/>
+            <button type="submit" class="btn btn-warning float-right">Visualizar</button>
+        </div>
+    </div>
+    </form>
+{% endblock %}

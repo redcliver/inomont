@@ -1,0 +1,49 @@
+{% extends 'base_gerencia.html' %}
+{% block body %}
+{% load static %}
+<main>
+    {% if msgConfirmacao %}
+		<script>alert('{{msgConfirmacao}}')</script>
+	{% endif %}
+        <div class="col-sm-12 col-md-12 col-12">
+            <img style="height: 80px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/pagar.svg' %}"alt="">&nbsp;<h3>Visualizar conta a pagar</h3><br><br>
+        </div>
+        <form method="GET" action="/gerencia/contasReceberEditar/" id="">
+            <input type="hidden" name="contaID" value="{{contaObj.id}}">
+            <div class="row">
+                <div class="col-sm-6 col-md-6"style="padding-bottom: 10px;">
+                    <label >Nome</label>
+                    <input type="text" name="nome" class="form-control" maxlength="200" placeholder="Nome" value="{{contaObj.nome}}" disabled>
+                </div>
+                <div class="col-sm-6 col-md-3"style="padding-bottom: 10px;">
+                    <label >Vencimento</label>
+                    <input type="text" name="dataVencimento" class="form-control" value="{{contaObj.dataVencimento|date:"d/m/Y"}}" disabled>
+                </div>
+                {% if contaObj.fixa == '1' %}
+                    <div class="col-sm-6 col-md-3 "style="padding-bottom: 10px; padding-top: 19px; text-align: center;">
+                        <input type="checkbox" name="fixa" class="form-group" id="exampleCheck1" checked disabled>
+                        <label class="form-check-label" for="exampleCheck1">Conta fixa</label>
+                    </div>
+                {% endif %}
+                {% if contaObj.fixa == '2' %}
+                    <div class="col-sm-6 col-md-3 "style="padding-bottom: 10px; padding-top: 19px; text-align: center;">
+                        <input type="checkbox" name="fixa" class="form-group" id="exampleCheck1" disabled>
+                        <label class="form-check-label" for="exampleCheck1">Conta fixa</label>
+                    </div>
+                {% endif %}
+                <div class="col-sm-12 col-md-6" style="padding-bottom: 10px;">
+                    <label >Observação</label>
+                    <input type="text" name="observacao" class="form-control" maxlength="300" placeholder="Observação" value="{{contaObj.observacao}}" disabled><br>
+                </div>         
+                <div class="col-sm-12 col-md-3" style="padding-bottom: 10px;">
+                    <label >Valor</label>
+                    <input type="number" name="valor" class="form-control" step='0.01' maxlength="10" placeholder="0.00" value="{{contaObj.valor}}" disabled><br>
+                </div>
+                <div class="col-sm-12 col-md-12 col-12">
+                    <input class="btn btn-outlined btn-secondary" style="float: left;" formaction="#" type="button" value="Voltar" onclick="goBack()"/>
+                    <input class="btn btn-outlined btn-warning" style="float: right;" type="submit" value="Editar" />
+                </div>
+            </div>
+        </form>
+</main>
+{% endblock %}

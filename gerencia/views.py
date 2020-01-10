@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from website.models import funcaoModel, cadastroSite, fornecedorModel, colaboradorModel, clienteModel
+from website.models import funcaoModel, cadastroSite, fornecedorModel, colaboradorModel, clienteModel, contaPagarModel, contaReceberModel
 import datetime
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
@@ -762,6 +762,7 @@ def contasRelatorioHome(request):
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
+
 def contasPagarHome(request):
     if request.user.is_authenticated:
         if request.user.last_name == "GERENCIA":
@@ -810,8 +811,97 @@ def contasPagarNovo(request):
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
             elif now >= 18 and now < 4:
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            if request.method == "POST" and request.POST.get('nome') != None:
+                nome = request.POST.get('nome')
+                dataVencimento = request.POST.get('dataVencimento')
+                if request.POST.get('fixa') != None:
+                    fixa = "1"
+                else:
+                    fixa = "2"
+                observacao = request.POST.get('observacao')
+                valor = request.POST.get('valor')
+                novaContaPagar = contaPagarModel(nome=nome, observacao=observacao, dataVencimento=dataVencimento, fixa=fixa, valor=valor)
+                novaContaPagar.save()
+                msgConfirmacao = "Conta registrada com sucesso!"
+                return render (request, 'gerencia/contas/pagar/pagarNovo.html', {'title':'Nova conta a pagar', 
+                                                                'msgTelaInicial':msgTelaInicial,
+                                                                'msgConfirmacao':msgConfirmacao})
             return render (request, 'gerencia/contas/pagar/pagarNovo.html', {'title':'Nova conta a pagar', 
                                                             'msgTelaInicial':msgTelaInicial})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+
+def contasPagarVisualizar(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            contas = contaPagarModel.objects.all()
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            if request.method == "POST" and request.POST.get('contaID') != None:
+                contaID = request.POST.get('contaID')
+                contaObj = contaPagarModel.objects.filter(id=contaID).get()
+                return render (request, 'gerencia/contas/pagar/pagarVisualizar.html', {'title':'Visualizar conta a pagar', 
+                                                                                    'msgTelaInicial':msgTelaInicial,
+                                                                                    'contaObj':contaObj})
+            return render (request, 'gerencia/contas/pagar/pagarBusca.html', {'title':'Visualizar conta a pagar', 
+                                                                                    'msgTelaInicial':msgTelaInicial,
+                                                                                    'contas':contas})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+
+def contasPagarEditar(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            try:
+                contaID = request.GET.get('contaID')
+                contaObj = contaPagarModel.objects.filter(id=contaID).get()
+            except:
+                print("Erro ao procurar com GET")
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            if request.method == "POST" and request.POST.get('contaID') != None:
+                contaID = request.POST.get('contaID')
+                contaObj = contaPagarModel.objects.filter(id=contaID).get()
+                nome = request.POST.get('nome')
+                dataVencimento = request.POST.get('dataVencimento')
+                if request.POST.get('fixa') != None:
+                    fixa = "1"
+                else:
+                    fixa = "2"
+                observacao = request.POST.get('observacao')
+                valor = request.POST.get('valor')
+                contaObj.nome = nome
+                contaObj.dataVencimento = dataVencimento
+                contaObj.fixa = fixa
+                contaObj.observacao = observacao
+                contaObj.valor = valor
+                contaObj.save()
+                msgConfirmacao = "Conta alterada com sucesso!"
+                contas = contaPagarModel.objects.all()
+                return render (request, 'gerencia/contas/pagar/pagarBusca.html', {'title':'Editar conta a pagar', 
+                                                                                    'msgTelaInicial':msgTelaInicial,
+                                                                                    'contaObj':contaObj,
+                                                                                    'msgConfirmacao':msgConfirmacao,
+                                                                                    'contas':contas})
+            return render (request, 'gerencia/contas/pagar/pagarEditar.html', {'title':'Editar conta a pagar', 
+                                                                                    'msgTelaInicial':msgTelaInicial,
+                                                                                    'contaObj':contaObj})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
 
@@ -828,10 +918,100 @@ def contasReceberNovo(request):
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
             elif now >= 18 and now < 4:
                 msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            if request.method == "POST" and request.POST.get != None:
+                nome = request.POST.get('nome')
+                dataVencimento = request.POST.get('dataVencimento')
+                if request.POST.get('fixa') != None:
+                    fixa = "1"
+                else:
+                    fixa = "2"
+                observacao = request.POST.get('observacao')
+                valor = request.POST.get('valor')
+                novaContaReceber = contaReceberModel(nome=nome, observacao=observacao, dataVencimento=dataVencimento, fixa=fixa, valor=valor)
+                novaContaReceber.save()
+                msgConfirmacao = "Conta registrada com sucesso!"
+                return render (request, 'gerencia/contas/receber/receberNovo.html', {'title':'Nova conta a receber', 
+                                                                'msgTelaInicial':msgTelaInicial,
+                                                                'msgConfirmacao':msgConfirmacao})
             return render (request, 'gerencia/contas/receber/receberNovo.html', {'title':'Nova conta a receber', 
                                                             'msgTelaInicial':msgTelaInicial})
         return render (request, 'site/login.html', {'title':'Login'})
     return render (request, 'site/login.html', {'title':'Login'})
+
+
+def contasReceberVisualizar(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            contas = contaReceberModel.objects.all()
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            if request.method == "POST" and request.POST.get('contaID') != None:
+                contaID = request.POST.get('contaID')
+                contaObj = contaReceberModel.objects.filter(id=contaID).get()
+                return render (request, 'gerencia/contas/receber/receberVisualizar.html', {'title':'Visualizar conta a receber', 
+                                                                                    'msgTelaInicial':msgTelaInicial,
+                                                                                    'contaObj':contaObj})
+            return render (request, 'gerencia/contas/receber/receberBusca.html', {'title':'Visualizar conta a receber', 
+                                                                                    'msgTelaInicial':msgTelaInicial,
+                                                                                    'contas':contas})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
+
+def contasReceberEditar(request):
+    if request.user.is_authenticated:
+        if request.user.last_name == "GERENCIA":
+            now = datetime.datetime.now().strftime('%H')
+            now = int(now)
+            try:
+                contaID = request.GET.get('contaID')
+                contaObj = contaReceberModel.objects.filter(id=contaID).get()
+            except:
+                print("Erro ao procurar com GET")
+            msgTelaInicial = "Olá, " + request.user.get_short_name() 
+            if now >= 4 and now <= 11:
+                msgTelaInicial = "Bom dia, " + request.user.get_short_name() 
+            elif now > 11 and now < 18:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name() 
+            elif now >= 18 and now < 4:
+                msgTelaInicial = "Boa Tarde, " + request.user.get_short_name()
+            if request.method == "POST" and request.POST.get('contaID') != None:
+                contaID = request.POST.get('contaID')
+                contaObj = contaReceberModel.objects.filter(id=contaID).get()
+                nome = request.POST.get('nome')
+                dataVencimento = request.POST.get('dataVencimento')
+                if request.POST.get('fixa') != None:
+                    fixa = "1"
+                else:
+                    fixa = "2"
+                observacao = request.POST.get('observacao')
+                valor = request.POST.get('valor')
+                contaObj.nome = nome
+                contaObj.dataVencimento = dataVencimento
+                contaObj.fixa = fixa
+                contaObj.observacao = observacao
+                contaObj.valor = valor
+                contaObj.save()
+                msgConfirmacao = "Conta alterada com sucesso!"
+                contas = contaPagarModel.objects.all()
+                return render (request, 'gerencia/contas/receber/receberBusca.html', {'title':'Editar conta a receber', 
+                                                                                    'msgTelaInicial':msgTelaInicial,
+                                                                                    'contaObj':contaObj,
+                                                                                    'msgConfirmacao':msgConfirmacao,
+                                                                                    'contas':contas})
+            return render (request, 'gerencia/contas/receber/receberEditar.html', {'title':'Editar conta a receber', 
+                                                                                    'msgTelaInicial':msgTelaInicial,
+                                                                                    'contaObj':contaObj})
+        return render (request, 'site/login.html', {'title':'Login'})
+    return render (request, 'site/login.html', {'title':'Login'})
+
 
 #Caixa
 def caixaHome(request):

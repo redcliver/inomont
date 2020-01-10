@@ -196,3 +196,49 @@ class clienteModel(models.Model):
     
     def __str__(self):
         return self.nome
+
+class contaPagarModel(models.Model):
+    ST = (
+        ('1', 'Em aberto'),
+        ('2', 'Paga'),
+        ('3', 'Atrasada'),
+        ('4', 'Cancelada'),
+    )
+    FX = (
+        ('1', 'Sim'),
+        ('2', 'Nao'),
+    )
+    id = models.AutoField(primary_key=True)
+    nome = models.CharField(max_length=300)
+    observacao = models.CharField(max_length=300, null=True, blank=True)
+    dataVencimento = models.DateTimeField(default=timezone.now)
+    status = models.CharField(max_length=1, choices=ST, default=1)
+    fixa = models.CharField(max_length=1, choices=FX, default=1)
+    valor = models.DecimalField(max_digits=6, decimal_places=2)
+    data_cadastro = models.DateTimeField(default=timezone.now)
+    
+    def __str__(self):
+        return self.nome
+
+class contaReceberModel(models.Model):
+    ST = (
+        ('1', 'Em aberto'),
+        ('2', 'Paga'),
+        ('3', 'Atrasada'),
+        ('4', 'Cancelada'),
+    )
+    FX = (
+        ('1', 'Sim'),
+        ('2', 'Nao'),
+    )
+    id = models.AutoField(primary_key=True)
+    nome = models.CharField(max_length=300)
+    observacao = models.CharField(max_length=300, null=True, blank=True)
+    dataVencimento = models.DateTimeField(default=timezone.now)
+    status = models.CharField(max_length=1, choices=ST, default=1)
+    fixa = models.CharField(max_length=1, choices=FX, default=1)
+    valor = models.DecimalField(max_digits=6, decimal_places=2)
+    data_cadastro = models.DateTimeField(default=timezone.now)
+    
+    def __str__(self):
+        return self.nome
