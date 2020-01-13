@@ -101,6 +101,12 @@ div.item {
     max-width: 250px;
 }
 
+img.imgCard{
+    height: 125px; 
+    width: auto; 
+    padding: 10px;
+}
+
 .caption {
     display: block;
     font-family: 'Quicksand', sans-serif; 

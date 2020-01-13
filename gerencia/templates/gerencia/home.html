@@ -3,57 +3,61 @@
 {% load static %}
 <main>
     <div class="row">
-        <div class="col menuPrincipal row" style="text-align: center;">
+        <div class="menuPrincipal" style="text-align: center;">
             <div class="col-md-2 col-sm-6 item ">
                 <a href="/gerencia/colaboradores/" class="gerenciaCaption corBotao">
-                <img style="height: 125px; width: auto; padding: 10px;" class=" responsive gerenciaImg" src="{% static '/images/ico/worker2.svg' %}"alt=""><br />
+                <img class="imgCard responsive gerenciaImg" src="{% static '/images/ico/worker2.svg' %}"alt=""><br />
                 Colaboradores</a>
             </div>
             <div class="col-md-2 col-sm-6 item">
                 <a href="/gerencia/orcamentos/" class="gerenciaCaption corBotao">
-                <img style="height: 125px; width: auto; padding: 10px;" class=" responsive gerenciaImg" src="{% static '/images/ico/budget.svg' %}"alt=""><br />
+                <img class="imgCard responsive gerenciaImg" src="{% static '/images/ico/budget.svg' %}"alt=""><br />
                 Orçamentos</a>
             </div>
             <div class="col-md-2 col-sm-6 item">
                 <a href="/gerencia/estoque/" class="gerenciaCaption corBotao">
-                <img style="height: 125px; width: auto; padding: 10px;" class=" responsive gerenciaImg" src="{% static '/images/ico/stock.svg' %}"alt=""><br />
+                <img class="imgCard responsive gerenciaImg" src="{% static '/images/ico/stock.svg' %}"alt=""><br />
                 Estoque</a>
             </div>
             <div class="col-md-2 col-sm-6 item">
                 <a href=/gerencia/clientes/ class="gerenciaCaption corBotao">
-                <img style="height: 125px; width: auto; padding: 10px;" class=" responsive gerenciaImg" src="{% static '/images/ico/partner.svg' %}"alt=""><br />
+                <img class="imgCard responsive gerenciaImg" src="{% static '/images/ico/partner.svg' %}"alt=""><br />
                 Clientes</a>
             </div>
             <div class="col-md-2 col-sm-6 item">
                 <a href="/gerencia/fornecedores/" class="gerenciaCaption corBotao">
-                <img style="height: 125px; width: auto; padding: 10px;" class=" responsive gerenciaImg" src="{% static '/images/ico/supplier.svg' %}"alt=""><br />
+                <img class="imgCard responsive gerenciaImg" src="{% static '/images/ico/supplier.svg' %}"alt=""><br />
                 Fornecedores</a>
             </div>
             <div class="col-md-2 col-sm-6 item">
                 <a href="#" class="gerenciaCaption corBotao">
-                <img style="height: 125px; width: auto; padding: 10px;" class=" responsive gerenciaImg" src="{% static '/images/ico/metrics.svg' %}"alt=""><br />
+                <img class="imgCard responsive gerenciaImg" src="{% static '/images/ico/metrics.svg' %}"alt=""><br />
                 Relatórios</a>
             </div>
             <div class="col-md-2 col-sm-6 item">
                 <a href="/gerencia/contas/" class="gerenciaCaption corBotao">
-                <img style="height: 125px; width: auto; padding: 10px;" class=" responsive gerenciaImg" src="{% static '/images/ico/contas.svg' %}"alt=""><br />
+                <img class="imgCard responsive gerenciaImg" src="{% static '/images/ico/contas.svg' %}"alt=""><br />
                 Contas</a>
             </div>
             <div class="col-md-2 col-sm-6 item">
                 <a href="/gerencia/caixaHome" class="gerenciaCaption corBotao">
-                <img style="height: 125px; width: auto; padding: 10px;" class=" responsive gerenciaImg" src="{% static '/images/ico/caixa.svg' %}"alt=""><br />
+                <img class="imgCard responsive gerenciaImg" src="{% static '/images/ico/caixa.svg' %}"alt=""><br />
                 Caixa</a>
             </div>
-            <div class="col-md-4 col-sm-0 "></div>
-            <div class="col-md-2 col-sm-6 ">
-                <a href="#" class="gerenciaCaption corBotao">
-                <img style="height: 125px; width: auto; padding: 10px;" class=" responsive gerenciaImg" src="{% static '/images/ico/support.svg' %}"alt=""><br />
-                Suporte</a>
+            <div class="col-md-4 col-sm-6 item"></div>
+            <div class="row">
+                <div class="container">
+                <div class="col-md-2 col-sm-6 item">
+                    <a href="#" class="gerenciaCaption corBotao">
+                    <img class="imgCard responsive gerenciaImg" src="{% static '/images/ico/support.svg' %}"alt=""><br />
+                    Suporte</a>
+                </div>
+                <div class="col-md-2 col-sm-6 item">
+                    <a href="/logout" class="gerenciaCaption corBotao">
+                        <img class="imgCard responsive gerenciaImg" src="{% static '/images/ico/logout.svg' %}"><br />
+                    Sair</a>
+                </div>
             </div>
-            <div class="col-md-2 col-sm-6 ">
-                <a href="/logout" class="gerenciaCaption corBotao">
-                    <img style="height: 125px; width: auto; padding: 10px;" class=" responsive gerenciaImg" src="{% static '/images/ico/logout.svg' %}"><br />
-                Sair</a>
             </div>
         </div>
     </div>

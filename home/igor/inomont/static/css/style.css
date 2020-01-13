@@ -6,6 +6,10 @@
     zoom: 1;
 }
 
+.corBotao > a:hover {
+    color: #FF8C00;
+}
+
 .clearfix:before,
 .clearfix:after {
     display: table;
@@ -2312,3 +2316,4 @@ img.author-box-image {
         position: relative !important;
     }
 }
+
