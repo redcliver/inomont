@@ -3,7 +3,7 @@
 <head>
     <title>{{title}} | Inomont Engenharia</title>
     <meta charset="UTF-8">
-    <meta name="viewport" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load staticfiles %}
     <!--===============================================================================================-->
     <link rel="shortcut icon" href="{% static '/images/ico/inomont.ico' %}">
@@ -162,7 +162,7 @@
             width: auto; 
             padding: 10px;
         }
-        @media screen and (min-width: 600px) and (max-width: 900px) {
+        @media only screen and (max-width: 600px){
             body {
                 background: url('../../static/img/fundo_diretor.jpg') no-repeat center center fixed;
                 -webkit-background-size: cover;
@@ -171,6 +171,12 @@
                 background-size: cover;
             }
 
+            .navbar-brand {
+                background: url('../../static/images/ico/inomontSmall.png');
+                width: 160px;
+                height: 60px;
+                margin-left: 5px;
+            }
             div.item {
                 vertical-align: top;
                 display: inline-block;
@@ -179,12 +185,12 @@
             }
 
             img.imgCard {
-                height: 230px; 
+                height: 130px; 
                 width: auto; 
                 padding: 10px;
             }
             .corBotao{
-                font-size: 30px;
+                font-size: 22px;
             }
             .navbar {
                 background: #FFB75E;  /* fallback for old browsers */
@@ -193,10 +199,6 @@
                 -webkit-box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.8);
                 -moz-box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.8);
                 box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.8);
-            }
-            .navbar-brand {
-                background: url('../../static/images/ico/inomont.png');
-                margin-left: 5px;
             }
             .sansserif {
                 color: #888;
@@ -229,20 +231,6 @@
                 background: linear-gradient(to bottom, rgba(255,255,255,0.7) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
                 
-            }
-            .navbar {
-                background: rgba(128,129,130,1);
-                background: -moz-linear-gradient(left, rgba(128,129,130,1) 0%, rgba(81,85,87,1) 100%);
-                background: -webkit-gradient(left top, right top, color-stop(0%, rgba(128,129,130,1)), color-stop(100%, rgba(81,85,87,1)));
-                background: -webkit-linear-gradient(left, rgba(128,129,130,1) 0%, rgba(81,85,87,1) 100%);
-                background: -o-linear-gradient(left, rgba(128,129,130,1) 0%, rgba(81,85,87,1) 100%);
-                background: -ms-linear-gradient(left, rgba(128,129,130,1) 0%, rgba(81,85,87,1) 100%);
-                background: linear-gradient(to right, rgba(128,129,130,1) 0%, rgba(81,85,87,1) 100%);
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#808182', endColorstr='#515557', GradientType=1 );
-                -webkit-box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.8);
-                -moz-box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.8);
-                box-shadow: 0 6px 6px -6px rgba(0, 0, 0, 0.8);
-                border-radius: 15px;
             }
             .parceiros {
                 font-family: Arial, Helvetica, sans-serif;
