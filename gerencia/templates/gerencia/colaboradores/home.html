@@ -1,34 +1,30 @@
 {% extends 'base_gerencia.html' %}
 {% block body %}
 {% load static %}
-<main>
-    <div class="row">
-        <div class="col menuPrincipal row" style="text-align: center;">
-            <div class="col item">
-                <a href="/gerencia/colaboradoresNovo" class="gerenciaCaption">
-                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/add-user.svg' %}"alt=""><br />
-                Novo Colaborador</a>
-            </div>
-            <div class="col item">
-                <a href="/gerencia/colaboradoresVisualizar" class="gerenciaCaption">
-                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/search.svg' %}"alt=""><br />
-                Visualizar Colaborador</a>
-            </div>
-            <div class="col item">
-                <a href="/gerencia/colaboradoresSite" class="gerenciaCaption">
-                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/arrow-back.svg' %}"alt=""><br />
-                Colaboradores Site</a>
-            </div><div class="col item">
-                <a href="/gerencia/funcao/" class="gerenciaCaption">
-                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/tools.svg' %}"alt=""><br />
-                Funções Site</a>
-            </div>
-            <div class="col item">
-                <a href="#" onclick="goBack()" class="gerenciaCaption">
-                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/back.svg' %}"alt=""><br />
-                Voltar</a>
-            </div>
-        </div>
+<div class="row">
+    <div class="col-6 col-md-2">
+        <a href="/gerencia/colaboradoresNovo" class="gerenciaCaption">
+        <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/add-user.svg' %}"alt=""><br />
+        Novo Colaborador</a>
     </div>
-</main>
+    <div class="col-6 col-md-2">
+        <a href="/gerencia/colaboradoresVisualizar" class="gerenciaCaption">
+        <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/search.svg' %}"alt=""><br />
+        Visualizar Colaborador</a>
+    </div>
+    <div class="col-6 col-md-2">
+        <a href="/gerencia/colaboradoresSite" class="gerenciaCaption">
+        <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/arrow-back.svg' %}"alt=""><br />
+        Colaboradores Site</a>
+    </div><div class="col-6 col-md-2">
+        <a href="/gerencia/funcao/" class="gerenciaCaption">
+        <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/tools.svg' %}"alt=""><br />
+        Funções Site</a>
+    </div>
+    <div class="col-6 col-md-2">
+        <a href="#" onclick="goBack()" class="gerenciaCaption">
+        <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/back.svg' %}"alt=""><br />
+        Voltar</a>
+    </div>
+</div>
 {% endblock %}

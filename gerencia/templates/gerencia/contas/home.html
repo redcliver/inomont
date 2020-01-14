@@ -1,30 +1,26 @@
 {% extends 'base_gerencia.html' %}
 {% block body %}
 {% load static %}
-<main>
-    <div class="row">
-        <div class="col menuPrincipal row" style="text-align: center;">
-            <div class="col item">
-                <a href="/gerencia/contasPagar/" class="gerenciaCaption">
-                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/pagar.svg' %}"alt=""><br />
-                Contas a pagar</a>
-            </div>
-            <div class="col item">
-                <a href="/gerencia/contasReceber/" class="gerenciaCaption">
-                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/receber.svg' %}"alt=""><br />
-                Contas a receber</a>
-            </div>
-            <div class="col item">
-                <a href="/gerencia/contasRelatorios/" class="gerenciaCaption">
-                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/relatorio.svg' %}"alt=""><br />
-                Relatórios</a>
-            </div>
-            <div class="col item">
-                <a href="#" onclick="goBack()" class="gerenciaCaption">
-                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/back.svg' %}"alt=""><br />
-                Voltar</a>
-            </div>
-        </div>
+<div class="row">
+    <div class="col-6 col-md-2">
+        <a href="/gerencia/contasPagar/" class="gerenciaCaption">
+        <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/pagar.svg' %}"alt=""><br />
+        Contas a pagar</a>
     </div>
-</main>
+    <div class="col-6 col-md-2">
+        <a href="/gerencia/contasReceber/" class="gerenciaCaption">
+        <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/receber.svg' %}"alt=""><br />
+        Contas a receber</a>
+    </div>
+    <div class="col-6 col-md-2">
+        <a href="/gerencia/contasRelatorios/" class="gerenciaCaption">
+        <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/ico/relatorio.svg' %}"alt=""><br />
+        Relatórios</a>
+    </div>
+    <div class="col-6 col-md-2">
+        <a href="#" onclick="goBack()" class="gerenciaCaption">
+        <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/back.svg' %}"alt=""><br />
+        Voltar</a>
+    </div>
+</div>
 {% endblock %}

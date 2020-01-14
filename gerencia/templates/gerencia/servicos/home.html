@@ -1,25 +1,21 @@
 {% extends 'base_gerencia.html' %}
 {% block body %}
 {% load static %}
-<main>
-    <div class="row">
-        <div class="col menuPrincipal row" style="text-align: center;">
-            <div class="col item">
-                <a href="/gerencia/servicosNovo/" class="gerenciaCaption">
-                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/job.svg' %}"alt=""><br />
-                Novo Serviço</a>
-            </div>
-            <div class="col item">
-                <a href="/gerencia/servicosVisualizar/" class="gerenciaCaption">
-                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/search.svg' %}"alt=""><br />
-                Visualizar Serviços</a>
-            </div>
-            <div class="col item">
-                <a href="#" onclick="goBack()" class="gerenciaCaption">
-                <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/back.svg' %}"alt=""><br />
-                Voltar</a>
-            </div>
-        </div>
+<div class="row">
+    <div class="col-6 col-md-2">
+        <a href="/gerencia/servicosNovo/" class="gerenciaCaption">
+        <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/job.svg' %}"alt=""><br />
+        Novo Serviço</a>
     </div>
-</main>
+    <div class="col-6 col-md-2">
+        <a href="/gerencia/servicosVisualizar/" class="gerenciaCaption">
+        <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/search.svg' %}"alt=""><br />
+        Visualizar Serviços</a>
+    </div>
+    <div class="col-6 col-md-2">
+        <a href="#" onclick="goBack()" class="gerenciaCaption">
+        <img style="height: 125px; width: auto; padding: 10px;" class="conhecaCallan " src="{% static '/images/colaboradores/back.svg' %}"alt=""><br />
+        Voltar</a>
+    </div>
+</div>
 {% endblock %}
